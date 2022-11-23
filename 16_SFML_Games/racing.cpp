@@ -13,9 +13,10 @@ int points[num][2] = {300, 610,
 
 struct Car
 {
-  float x,y,speed,angle; int n;
+  float x,y,speed,angle; int checkpoint;
 
-  Car() {speed=2; angle=0; n=0;}
+  // Constructor
+  Car() {speed=2; angle=0; checkpoint=0;}
 
   void move()
    {
@@ -25,11 +26,12 @@ struct Car
 
   void findTarget()
   {
-    float tx=points[n][0];
-    float ty=points[n][1];
+    float tx=points[checkpoint][0];
+    float ty=points[checkpoint][1];
     float beta = angle-atan2(tx-x,-ty+y);
     if (sin(beta)<0) angle+=0.005*speed; else angle-=0.005*speed;
-    if ((x-tx)*(x-tx)+(y-ty)*(y-ty)<25*25) n=(n+1)%num;
+    
+    if ((x-tx)*(x-tx)+(y-ty)*(y-ty)<25*25) /*When close to checkpoint*/ checkpoint = (checkpoint + 1) % num; //Goes from 0 to 8 and wraps around
    }
 };
 
