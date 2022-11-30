@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
 using namespace sf;
 
 const int num=8; //checkpoints
@@ -51,11 +53,12 @@ int racing()
     sBackground.scale(2,2);
 
     sCar.setOrigin(22, 22);
-    float R=22;
+    float carRadius=22;
 
-    const int N=5;
-    Car car[N];
-    for(int i=0;i<N;i++)
+    const int numOfCars=5;
+    Car car[numOfCars];
+
+    for(int i=0;i<numOfCars;i++)
     {
       car[i].x=300+i*50;
       car[i].y=1700+i*80;
@@ -64,10 +67,15 @@ int racing()
 
    float speed=0,angle=0;
    float maxSpeed=12.0;
-   float acc=0.2, dec=0.3;
+   float acceleration=0.2, deceleration=0.3;
    float turnSpeed=0.08;
 
    int offsetX=0,offsetY=0;
+
+   float minScreenWidth = 320;
+   float minScreenHeight = 240;
+   float maxScreenWidth = 2500;
+   float maxScreenHeight = 3400;
 
     while (app.isOpen())
     {
@@ -85,57 +93,117 @@ int racing()
     if (Keyboard::isKeyPressed(Keyboard::Left)) Left=1;
 
     //car movement
-    if (Up && speed<maxSpeed)
-        if (speed < 0)  speed += dec;
-        else  speed += acc;
+    if (Up && speed < maxSpeed)
+    {
+        if (speed < 0)
+        {
+            speed += deceleration;
+        }
+        else
+        {
+            speed += acceleration;
+        }
+    }
+        
 
-    if (Down && speed>-maxSpeed)
-        if (speed > 0) speed -= dec;
-        else  speed -= acc;
+    if (Down && speed > -maxSpeed)
+    {
+        if (speed > 0)
+        {
+            speed -= deceleration;
+        }
+        else
+        {
+            speed -= acceleration;
+        }
+    }
+        
 
     if (!Up && !Down)
-        if (speed - dec > 0) speed -= dec;
-        else if (speed + dec < 0) speed += dec;
-        else speed = 0;
+    {
+        if (speed - deceleration > 0)
+        {
+            speed -= deceleration;
+        }
+        else if (speed + deceleration < 0)
+        {
+            speed += deceleration;
+        }
+        else
+        {
+            speed = 0;
+        }
+    }
+        
 
-    if (Right && speed!=0)  angle += turnSpeed * speed/maxSpeed;
-    if (Left && speed!=0)   angle -= turnSpeed * speed/maxSpeed;
+    if (Right && speed != 0)
+    {
+        angle += turnSpeed * speed / maxSpeed;
+    }
+    if (Left && speed != 0)
+    {
+        angle -= turnSpeed * speed / maxSpeed;
+    }
 
     car[0].speed = speed;
     car[0].angle = angle;
 
-    for(int i=0;i<N;i++) car[i].move();
-    for(int i=1;i<N;i++) car[i].findTarget();
+    for(int i=0;i<numOfCars;i++) car[i].move();
+    for(int i=1;i<numOfCars;i++) car[i].findTarget();
 
     //collision
-    for(int i=0;i<N;i++)
-    for(int j=0;j<N;j++)
-    {      
-        int dx=0, dy=0;
-        while (dx*dx+dy*dy<4*R*R)
-         {
-           car[i].x+=dx/10.0;
-           car[i].x+=dy/10.0;
-           car[j].x-=dx/10.0;
-           car[j].y-=dy/10.0;
-           dx = car[i].x-car[j].x;
-           dy = car[i].y-car[j].y;
-           if (!dx && !dy) break;
-         }
+    for(int collisionCheck=0;collisionCheck<numOfCars;collisionCheck++)
+    { 
+        for(int checkAgainst=0;checkAgainst<numOfCars;checkAgainst++)
+        {      
+            const int CAR_HITBOX = 4 * carRadius * carRadius;
+            int distanceBetweenX=0, distanceBetweenY=0;
+
+            // if the distance between the cars is lesser than the radisu 
+            while (distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY < CAR_HITBOX )
+            {
+                // pushes car to the side by a tenth of the distance between the cars 
+               car[collisionCheck].x+=distanceBetweenX/10.0;
+               car[collisionCheck].x+=distanceBetweenY/10.0;
+               car[checkAgainst].x-=distanceBetweenX/10.0;
+               car[checkAgainst].y-=distanceBetweenY/10.0;
+           
+               distanceBetweenX = car[collisionCheck].x - car[checkAgainst].x;
+               distanceBetweenY = car[collisionCheck].y - car[checkAgainst].y;
+                
+    
+               // if the cars are touching 
+               if(distanceBetweenX == 0 && distanceBetweenY == 0)
+               {
+                    break;
+               }
+               
+            }
+        }
     }
 
+    app.clear(Color::Black);
 
-    app.clear(Color::White);
+    // Border locking X
+    if (car[0].x > minScreenWidth && car[0].x < maxScreenWidth)
+    {
+        offsetX = car[0].x - minScreenWidth;
+    }
 
-    if (car[0].x>320) offsetX = car[0].x-320;
-    if (car[0].y>240) offsetY = car[0].y-240;
+    // Border locking Y
+    if (car[0].y > minScreenHeight && car[0].y < maxScreenHeight)
+    {
+        offsetY = car[0].y - minScreenHeight;
+    }
 
-    sBackground.setPosition(-offsetX,-offsetY);
+    std::cout << "x: " << car[0].x << " y: " << car[0].y << "\n";
+    sBackground.setPosition(-offsetX, -offsetY);
+
     app.draw(sBackground);
 
     Color colors[10] = {Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White};
 
-    for(int i=0;i<N;i++)
+    for(int i=0;i<numOfCars;i++)
     {
       sCar.setPosition(car[i].x-offsetX,car[i].y-offsetY);
       sCar.setRotation(car[i].angle*180/3.141593);
