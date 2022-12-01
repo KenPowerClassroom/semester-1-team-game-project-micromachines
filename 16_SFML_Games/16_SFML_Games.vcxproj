@@ -151,6 +151,8 @@
     <ClCompile Include="xonix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="carInput.h" />
     <ClInclude Include="Connector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
