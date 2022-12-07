@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+
 #include <iostream>
 #include "Car.h"
 using namespace sf;
@@ -116,9 +116,15 @@ int racing()
     car[0].speed = speed;
     car[0].angle = angle;
 
-    for(int i=0;i<numOfCars;i++) car[i].move();
-    for(int i=1;i<numOfCars;i++) car[i].findTarget();
+    for (int i = 0; i < numOfCars; i++)
+    {
+        car[i].move();
+    }
 
+    for (int i = 1; i < numOfCars; i++)
+    {
+        car[i].findTarget();
+    }
     //collision
     for(int collisionCheck=0;collisionCheck<numOfCars;collisionCheck++)
     { 

@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 const int num = 8; //checkpoints
 int points[num][2] = { 300, 610,
                       1270,430,
@@ -30,5 +31,5 @@ struct Car
         if (sin(beta) < 0) angle += 0.005 * speed; else angle -= 0.005 * speed;
 
         if ((x - tx) * (x - tx) + (y - ty) * (y - ty) < 25 * 25) /*When close to checkpoint*/ checkpoint = (checkpoint + 1) % num; //Goes from 0 to 8 and wraps around
-    }
+    }   
 };
