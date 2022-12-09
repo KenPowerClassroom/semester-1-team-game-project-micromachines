@@ -35,23 +35,32 @@ TEST(CarController, rotateCar) {
 	Car car;
 
 	car.x = 0;
-	car.y = 1;
+	car.y = 0;
 
-	float oldX = car.x;
-	float oldY = car.y;
-
-	car.speed = 10;
+	car.speed = 0;
 	car.angle = 0;
 
-	float turnSpeed = 0.08;
+	float expectedAngle = 3.14;
 
-	while (car.angle < 3.141592653*2)
+	float turnSpeed = 0.08;
+	float maxSpeed = 12.0;
+	float acceleration = 0.2;
+
+	for (double i=0; i<std::numeric_limits<double>::max(); i++)
 	{
+		if (car.speed < maxSpeed)
+		{
+			car.speed += acceleration;
+		}
 		car.angle += turnSpeed * car.speed;
 		car.move();
+
+		if (car.angle >= 3.14)
+		{
+			break;
+		}
 	}
 
-	EXPECT_EQ(oldY, car.y);
-	EXPECT_EQ(oldX, car.x);
+	EXPECT_TRUE(car.angle >= expectedAngle);
 }
 

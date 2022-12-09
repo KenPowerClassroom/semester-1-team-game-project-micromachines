@@ -27,6 +27,7 @@ struct Car
     {
         float tx = points[checkpoint][0];
         float ty = points[checkpoint][1];
+        // Atan2 converts an angle in degrees to a vector
         float beta = angle - atan2(tx - x, -ty + y);
         if (sin(beta) < 0) angle += 0.005 * speed; else angle -= 0.005 * speed;
 

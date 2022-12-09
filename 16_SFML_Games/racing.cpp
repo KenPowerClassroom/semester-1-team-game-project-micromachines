@@ -3,8 +3,25 @@
 #include "Car.h"
 using namespace sf;
 
-
-
+//void test(Car car)
+//{
+//    if (car.speed < maxSpeed)
+//    {
+//        car.speed += acceleration;
+//    }
+//    car.angle += turnSpeed * car.speed;
+//    car.move();
+//
+//    if (car.angle >= 3.141592653f)
+//    {
+//        std::cout << "speed : " << car.speed << "\n";
+//        std::cout << "angle : " << car.angle << "\n";
+//    }
+//    else
+//    {
+//        std::cout << "test passed!\n";
+//    }
+//}
 
 int racing()
 {
@@ -59,6 +76,19 @@ int racing()
     if (Keyboard::isKeyPressed(Keyboard::Right)) Right=1;
     if (Keyboard::isKeyPressed(Keyboard::Down)) Down=1;
     if (Keyboard::isKeyPressed(Keyboard::Left)) Left=1;
+
+    //test(car[0]);
+
+    if (car[0].angle <= 3.141592653f)
+    {
+        /*std::cout << "speed : " << car[0].speed << "\n";
+        std::cout << "angle : " << car[0].angle << "\n";*/
+    }
+    else
+    {
+        std::cout << "test passed!\n";
+        car[0].angle = 0;
+    }
 
     //car movement
     if (Up && speed < maxSpeed)
