@@ -35,36 +35,51 @@
 //    }   
 //};
 
+class carController
+{
+public:
+    carController();
+    void inputHandler(bool Up, bool Down, bool Right, bool Left); 
+    float getSpeed(); 
+    float getAngle(); 
+private:
+    float speed = 0, angle = 0;
+    float maxSpeed = 12.0;
+    float acceleration = 0.2, deceleration = 0.3;
+    float turnSpeed = 0.08;
+
+};
+
 class newCar
 {
 public:
     // origin need to be 22
     newCar(); 
     newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_speed, sf::Color t_carColor);
+
     void setPosition(sf::Vector2f t_position); 
-    void direction(int t_direction);
+
     void findTarget(); 
+
     sf::Vector2f getPosition(); 
+
     void setRotation(); 
-    void move(); 
+
+    void updatePosition(); 
+
     void draw(sf::RenderWindow &t_window); 
 
+    void steer(); ;
+
+    float m_speed;
+    float m_angle; 
 private:
+
     sf::Sprite m_body; 
     sf::Vector2f m_position; 
-    float m_speed; 
+    carController carController; 
     float carRadius{ 22 };
 
-    float speed = 0, angle = 0;
-    float maxSpeed = 12.0;
-    float acceleration = 0.2, deceleration = 0.3;
-    float turnSpeed = 0.08;
+
 };
 
-class carController
-{
-public:
-
-private:
-    
-};

@@ -39,8 +39,7 @@ int racing()
         cars.push_back(car); 
     }
 
-
-
+   
     // screen 
     int offsetX = 0, offsetY = 0;
     float minScreenWidth = 320;
@@ -62,31 +61,12 @@ int racing()
         }
 
         // movememnt 
-
-        if (Keyboard::isKeyPressed(Keyboard::Up))
-        {
-            cars[0].direction(1);
-        }
-
-        if (Keyboard::isKeyPressed(Keyboard::Right))
-        {
-            cars[0].direction(2);
-        }
-
-        if (Keyboard::isKeyPressed(Keyboard::Down))
-        {
-            cars[0].direction(3);
-        }
-
-        if (Keyboard::isKeyPressed(Keyboard::Left))
-        {
-            cars[0].direction(4);
-        }
-    
+        cars[0].steer(); 
+       
 
         for (int i = 0; i < numOfCars; i++)
         {
-            cars[i].move();
+            cars[i].updatePosition();
         }
         // speed management  
 

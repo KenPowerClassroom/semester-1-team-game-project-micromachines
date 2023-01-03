@@ -2,8 +2,8 @@
 #include <iostream>
 newCar::newCar()
 {
-    speed = 2; 
-    angle = 0;
+    m_speed = 2; 
+    m_angle = 0;
 }
 
 newCar::newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_speed, sf::Color t_carColor)
@@ -20,62 +20,9 @@ void newCar::setPosition(sf::Vector2f t_position)
 	m_body.setPosition(t_position); 
 }
 
-void newCar::direction(int t_direction)
-{
-
-	int Up = 1, Right = 2, Down = 3, Left = 4;
-
-    if (t_direction ==Up && speed < maxSpeed)
-    {
-        if (speed < 0)
-        {
-            speed += deceleration;
-        }
-        else
-        {
-            speed += acceleration;
-        }
-    }
 
 
-    if (t_direction == Down && speed > -maxSpeed)
-    {
-        if (speed > 0)
-        {
-            speed -= deceleration;
-        }
-        else
-        {
-            speed -= acceleration;
-        }
-    }
 
-
-    if (t_direction!=Up && t_direction!=Down)
-    {
-        if (speed - deceleration > 0)
-        {
-            speed -= deceleration;
-        }
-        else if (speed + deceleration < 0)
-        {
-            speed += deceleration;
-        }
-        else
-        {
-            speed = 0;
-        }
-    }
-    if (t_direction==Right && speed != 0)
-    {
-        angle += turnSpeed * speed / maxSpeed;
-    }
-    if (t_direction==Left && speed != 0)
-    {
-        angle -= turnSpeed * speed / maxSpeed;
-    }
-
-}
 
 void newCar::findTarget()
 {
@@ -97,18 +44,118 @@ sf::Vector2f newCar::getPosition()
 
 void newCar::setRotation()
 {
-    m_body.setRotation(angle * 180 / 3.141593);
+    m_body.setRotation(m_angle * 180 / 3.141593);
 }
 
-void newCar::move()
+void newCar::updatePosition()
 {
-    std::cout << speed << std::endl; 
-    m_position.x += sin(angle) * speed;
-    m_position.y -= cos(angle) * speed;
+    m_position.x += sin(m_angle) * m_speed;
+    m_position.y -= cos(m_angle) * m_speed;
     m_body.setPosition(m_position); 
 }
 
 void newCar::draw(sf::RenderWindow &t_window)
 {
     t_window.draw(m_body); 
+}
+
+void newCar::steer()
+{
+
+    bool Up = 0, Down = 0,  Right= 0, Left = 0;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        Up = 1;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        Down = 1;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+    {
+        Right = 1;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+    {
+         Left = 1;
+    }
+
+    carController.inputHandler(Up, Down, Right, Left); 
+   
+
+    m_speed = carController.getSpeed(); 
+    m_angle = carController.getAngle(); 
+
+}
+
+carController::carController()
+{
+}
+
+void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
+{
+    //car movement
+    if (Up && speed < maxSpeed)
+    {
+        if (speed < 0)
+        {
+            speed += deceleration;
+        }
+        else
+        {
+            speed += acceleration;
+        }
+    }
+
+
+    if (Down && speed > -maxSpeed)
+    {
+        if (speed > 0)
+        {
+            speed -= deceleration;
+        }
+        else
+        {
+            speed -= acceleration;
+        }
+    }
+
+
+    if (!Up && !Down)
+    {
+        if (speed - deceleration > 0)
+        {
+            speed -= deceleration;
+        }
+        else if (speed + deceleration < 0)
+        {
+            speed += deceleration;
+        }
+        else
+        {
+            speed = 0;
+        }
+    }
+
+
+    if (Right && speed != 0)
+    {
+        angle += turnSpeed * speed / maxSpeed;
+    }
+    if (Left && speed != 0)
+    {
+        angle -= turnSpeed * speed / maxSpeed;
+    }
+
+}
+
+float carController::getSpeed()
+{
+    return speed;
+}
+
+float carController::getAngle()
+{
+    return angle;
 }
