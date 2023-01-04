@@ -24,17 +24,35 @@ void newCar::setPosition(sf::Vector2f t_position)
 
 
 
-void newCar::findTarget()
+void newCar::findNextCheckpoint()
 {
-    
 
-    //float tx = points[0][0];
-    //float ty = points[0][1];
+
+    float tx = points[checkpoint][0];
+    float ty = points[checkpoint][1];
     //// Atan2 converts an angle in degrees to a vector
-    //float beta = angle - atan2(tx - m_position.x, -ty + m_position.y);
-    //if (sin(beta) < 0) angle += 0.005 * speed; else angle -= 0.005 * speed;
+    //float beta = m_angle - atan2(tx - m_position.x, -ty + m_position.y);
+    //if (sin(beta) < 0)
+    //{
+    //    m_angle += 0.005 * m_speed;
+    //}
+    //else
+    //{
+    //    m_angle -= 0.005 * m_speed;
+    //}
 
-   // if ((x - tx) * (x - tx) + (y - ty) * (y - ty) < 25 * 25) /*When close to checkpoint*/ checkpoint = (checkpoint + 1) % num; //Goes from 0 to 8 and wraps around
+    //if ((m_position.x - tx) * (m_position.x - tx) + (m_position.y - ty) * (m_position.y - ty) < 25 * 25) /*When close to checkpoint*/
+    //{
+    //    checkpoint = (checkpoint + 1) % num; //Goes from 0 to 8 and wraps around
+    //}
+
+    if (carController.foundTarget({tx,ty}, m_position))
+    {
+        checkpoint = (checkpoint + 1) % num;
+     //m_angle = carController.getAngle(); 
+    }
+   
+        
 }
 
 sf::Vector2f newCar::getPosition()
@@ -89,73 +107,5 @@ void newCar::steer()
 
 }
 
-carController::carController()
-{
-}
-
-void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
-{
-    //car movement
-    if (Up && speed < maxSpeed)
-    {
-        if (speed < 0)
-        {
-            speed += deceleration;
-        }
-        else
-        {
-            speed += acceleration;
-        }
-    }
 
 
-    if (Down && speed > -maxSpeed)
-    {
-        if (speed > 0)
-        {
-            speed -= deceleration;
-        }
-        else
-        {
-            speed -= acceleration;
-        }
-    }
-
-
-    if (!Up && !Down)
-    {
-        if (speed - deceleration > 0)
-        {
-            speed -= deceleration;
-        }
-        else if (speed + deceleration < 0)
-        {
-            speed += deceleration;
-        }
-        else
-        {
-            speed = 0;
-        }
-    }
-
-
-    if (Right && speed != 0)
-    {
-        angle += turnSpeed * speed / maxSpeed;
-    }
-    if (Left && speed != 0)
-    {
-        angle -= turnSpeed * speed / maxSpeed;
-    }
-
-}
-
-float carController::getSpeed()
-{
-    return speed;
-}
-
-float carController::getAngle()
-{
-    return angle;
-}

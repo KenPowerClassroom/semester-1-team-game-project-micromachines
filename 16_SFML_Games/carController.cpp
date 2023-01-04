@@ -7,67 +7,91 @@ carController::carController()
 void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
 {
     //car movement
-    if (Up && speed < maxSpeed)
+    if (Up && m_speed < m_maxSpeed)
     {
-        if (speed < 0)
+        if (m_speed < 0)
         {
-            speed += deceleration;
+            m_speed += m_deceleration;
         }
         else
         {
-            speed += acceleration;
+            m_speed += m_acceleration;
         }
     }
 
 
-    if (Down && speed > -maxSpeed)
+    if (Down && m_speed > -m_maxSpeed)
     {
-        if (speed > 0)
+        if (m_speed > 0)
         {
-            speed -= deceleration;
+            m_speed -= m_deceleration;
         }
         else
         {
-            speed -= acceleration;
+            m_speed -= m_acceleration;
         }
     }
 
 
     if (!Up && !Down)
     {
-        if (speed - deceleration > 0)
+        if (m_speed - m_deceleration > 0)
         {
-            speed -= deceleration;
+            m_speed -= m_deceleration;
         }
-        else if (speed + deceleration < 0)
+        else if (m_speed + m_deceleration < 0)
         {
-            speed += deceleration;
+            m_speed += m_deceleration;
         }
         else
         {
-            speed = 0;
+            m_speed = 0;
         }
     }
 
 
-    if (Right && speed != 0)
+    if (Right && m_speed != 0)
     {
-        angle += turnSpeed * speed / maxSpeed;
+        m_angle += m_turnSpeed * m_speed / m_maxSpeed;
     }
-    if (Left && speed != 0)
+    if (Left && m_speed != 0)
     {
-        angle -= turnSpeed * speed / maxSpeed;
+        m_angle -= m_turnSpeed * m_speed / m_maxSpeed;
     }
 
+}
+
+ bool carController::foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin)
+{
+
+    float beta = m_angle - atan2(nextCheckpoint.x - t_currentPositin.x, -nextCheckpoint.y + t_currentPositin.y);
+    if (sin(beta) < 0)
+    {
+        m_angle += 0.005 * m_speed;
+    }
+    else
+    {
+        m_angle -= 0.005 * m_speed;
+    }
+
+    if ((t_currentPositin.x - nextCheckpoint.x) * (t_currentPositin.x - nextCheckpoint.x) 
+        + (t_currentPositin.y - nextCheckpoint.y) * (t_currentPositin.y - nextCheckpoint.y) < 25 * 25) /*When close to checkpoint*/
+    {
+        return true; //Goes from 0 to 8 and wraps around
+    }
+    else
+    {
+        return false; 
+    }
 }
 
 
 float carController::getSpeed()
 {
-    return speed;
+    return m_speed;
 }
 
 float carController::getAngle()
 {
-    return angle;
+    return m_angle;
 }

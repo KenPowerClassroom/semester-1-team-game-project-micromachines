@@ -70,6 +70,10 @@ int racing()
         }
         // speed management  
 
+        for (int  i = 1; i < numOfCars; i++)
+        {
+            cars[i].findNextCheckpoint(); 
+        }
        
      
 
