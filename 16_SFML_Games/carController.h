@@ -6,7 +6,7 @@ class carController
 public:
     carController();
     void inputHandler(bool Up, bool Down, bool Right, bool Left);
-    bool foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin); 
+    bool foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin,float t_speed);
     float getSpeed();
     float getAngle();
 private:

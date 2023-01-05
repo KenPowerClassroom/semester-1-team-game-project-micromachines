@@ -61,10 +61,11 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
 
 }
 
- bool carController::foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin)
+ bool carController::foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin, float t_speed)
 {
-
+    m_speed = t_speed; 
     float beta = m_angle - atan2(nextCheckpoint.x - t_currentPositin.x, -nextCheckpoint.y + t_currentPositin.y);
+    m_angle;
     if (sin(beta) < 0)
     {
         m_angle += 0.005 * m_speed;

@@ -30,29 +30,14 @@ void newCar::findNextCheckpoint()
 
     float tx = points[checkpoint][0];
     float ty = points[checkpoint][1];
-    //// Atan2 converts an angle in degrees to a vector
-    //float beta = m_angle - atan2(tx - m_position.x, -ty + m_position.y);
-    //if (sin(beta) < 0)
-    //{
-    //    m_angle += 0.005 * m_speed;
-    //}
-    //else
-    //{
-    //    m_angle -= 0.005 * m_speed;
-    //}
-
-    //if ((m_position.x - tx) * (m_position.x - tx) + (m_position.y - ty) * (m_position.y - ty) < 25 * 25) /*When close to checkpoint*/
-    //{
-    //    checkpoint = (checkpoint + 1) % num; //Goes from 0 to 8 and wraps around
-    //}
-
-    if (carController.foundTarget({tx,ty}, m_position))
+   
+    if (carController.foundTarget({tx,ty}, m_position, m_speed))
     {
         checkpoint = (checkpoint + 1) % num;
-     //m_angle = carController.getAngle(); 
-    }
-   
         
+    }
+   m_angle = carController.getAngle(); 
+  
 }
 
 sf::Vector2f newCar::getPosition()
