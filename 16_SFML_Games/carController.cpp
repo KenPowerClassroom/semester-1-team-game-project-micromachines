@@ -61,10 +61,10 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
 
 }
 
- bool carController::foundTarget(sf::Vector2f nextCheckpoint, sf::Vector2f t_currentPositin, float t_speed)
+ bool carController::foundTarget(sf::Vector2f nextCheckpoint)
 {
-    m_speed = t_speed; 
-    float beta = m_angle - atan2(nextCheckpoint.x - t_currentPositin.x, -nextCheckpoint.y + t_currentPositin.y);
+    //m_speed = t_speed; 
+    float beta = m_angle - atan2(nextCheckpoint.x -m_position.x, -nextCheckpoint.y + m_position.y);
     m_angle;
     if (sin(beta) < 0)
     {
@@ -75,8 +75,8 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
         m_angle -= 0.005 * m_speed;
     }
 
-    if ((t_currentPositin.x - nextCheckpoint.x) * (t_currentPositin.x - nextCheckpoint.x) 
-        + (t_currentPositin.y - nextCheckpoint.y) * (t_currentPositin.y - nextCheckpoint.y) < 25 * 25) /*When close to checkpoint*/
+    if ((m_position.x - nextCheckpoint.x) * (m_position.x - nextCheckpoint.x)
+        + (m_position.y - nextCheckpoint.y) * (m_position.y - nextCheckpoint.y) < 25 * 25) /*When close to checkpoint*/
     {
         return true; //Goes from 0 to 8 and wraps around
     }
@@ -86,13 +86,42 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
     }
 }
 
+ void carController::setPosition(sf::Vector2f t_position)
+ {
+     m_position = t_position; 
+ }
 
-float carController::getSpeed()
+ void carController::setSpeed(float t_speed)
+ {
+     m_speed = t_speed; 
+ }
+
+ void carController::setAngle(float t_angle)
+ {
+     m_angle = t_angle;
+ }
+
+ sf::Vector2f carController::getUpdatedPositioning()
+ {
+     m_position.x += sin(m_angle) * m_speed;
+     m_position.y -= cos(m_angle) * m_speed; 
+
+     return m_position; 
+
+ }
+
+
+ sf::Vector2f carController::getPosition()
+ {
+     return m_position;
+ }
+
+ float carController::getSpeed()
 {
     return m_speed;
 }
 
 float carController::getAngle()
 {
-    return m_angle;
+    return m_angle * 180 / 3.141593;
 }
