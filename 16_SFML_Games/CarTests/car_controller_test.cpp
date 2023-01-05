@@ -1,15 +1,18 @@
 #include "pch.h"
 #include "../carController.h"
-
+#include "../carController.cpp"
 TEST(CarController, moveCarForward) 
 {
 	carController car;
 
 	car.setPosition({0, 0});
 	car.setSpeed(1); 
+	car.setAngle(0.5); 
 	car.inputHandler(true, false, false, false); 
 
-	EXPECT_EQ(car.getPosition().y, -1);
+	int result = static_cast<int>(car.getUpdatedPositioning().y);
+
+	EXPECT_EQ(result, -1);
 }
 
 TEST(CarController, moveCarBackwards) 
@@ -17,87 +20,44 @@ TEST(CarController, moveCarBackwards)
 	carController car;
 
 	car.setPosition({ 0, 0 });
-	car.setSpeed(1);
-	car.inputHandler(true, false, false, false);
+	car.setSpeed(-1);
+	car.setAngle(0.5);
+	car.inputHandler(false, true, false, false);
 
-	EXPECT_EQ(car.getPosition().y, -1);
+	int result = static_cast<int>(car.getUpdatedPositioning().y);
+
+	EXPECT_EQ(result, 1);
 }
 
-//TEST(CarController, rotateCar) {
-//	Car car;
-//
-//	car.x = 0;
-//	car.y = 0;
-//
-//	car.speed = 0;
-//	car.angle = 0;
-//
-//	float expectedAngle = 3.14;
-//
-//	float turnSpeed = 0.08;
-//	float maxSpeed = 12.0;
-//	float acceleration = 0.2;
-//
-//	for (double i=0; i<std::numeric_limits<double>::max(); i++)
-//	{
-//		if (car.speed < maxSpeed)
-//		{
-//			car.speed += acceleration;
-//		}
-//		car.angle += turnSpeed * car.speed;
-//		car.move();
-//
-//		if (car.angle >= expectedAngle)
-//		{
-//			break;
-//		}
-//	}
-//
-//	EXPECT_TRUE(car.angle >= expectedAngle);
-//}
+// test to see once the car has done half a full rotation that it reaches the same Y axi position it started in 
+TEST(CarController, rotateCar) {
 
-//TEST(CarController, rotateCar) {
-//		/*Car car;
-//	
-//		car.x = 0;
-//		car.y = 0;
-//	
-//		car.speed = 0;
-//		car.angle = 0;
-//	
-//		float expectedAngle = 3.14;
-//	
-//		float turnSpeed = 0.08;
-//		float maxSpeed = 12.0;
-//		float acceleration = 0.2;
-//	
-//		for (double i=0; i<std::numeric_limits<double>::max(); i++)
-//		{
-//			if (car.speed < maxSpeed)
-//			{
-//				car.speed += acceleration;
-//			}
-//			car.angle += turnSpeed * car.speed;
-//			car.move();
-//	
-//			if (car.angle >= expectedAngle)
-//			{
-//				break;
-//			}
-//		}
-//	
-//		EXPECT_TRUE(car.angle >= expectedAngle);*/
-//
-//		carController car; 
-//
-//		car.
-//	}
+
+	carController car;
+	float startingXpos = 100; 
+
+	car.setPosition({startingXpos,0 });
+	car.setSpeed(9);
+	car.setAngle(0);
+
+	int times = 0; 
+	
+	for (int i = 0; i < 80; i++)
+	{
+		car.inputHandler(true, false, true, false);
+		car.getUpdatedPositioning();
+	}
+	
+	int result = static_cast<int>(car.getUpdatedPositioning().x);
+	EXPECT_EQ(startingXpos, result);
+
+}
 
 TEST(CarController, findTarget)
 {
 	carController car;
 
-	car.setPosition({ 300, 616 });
+	car.setPosition({ 300, 634 });
 	car.setSpeed(1);
 	car.inputHandler(true, false, false, false); 
 

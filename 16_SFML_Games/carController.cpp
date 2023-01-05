@@ -1,11 +1,12 @@
 #include "carController.h"
-
+#include <iostream>
 carController::carController()
 {
 }
 
 void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
 {
+    std::cout << m_angle << std::endl; 
     //car movement
     if (Up && m_speed < m_maxSpeed)
     {
@@ -58,6 +59,7 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
     {
         m_angle -= m_turnSpeed * m_speed / m_maxSpeed;
     }
+
 
 }
 

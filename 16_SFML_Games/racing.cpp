@@ -22,7 +22,7 @@ int racing()
 
     Sprite sBackground(t1);
    
-    
+    int i = 0;
     
     sBackground.scale(2, 2);
     
@@ -114,6 +114,16 @@ int racing()
             cars[i].setRotation();
             cars[i].draw(app); 
 
+        }
+
+        if (cars[0].getPosition().x <290)
+        {
+            i;
+            break;
+        }
+        else
+        {
+            i++;
         }
         // screen 
         app.display();
