@@ -75,6 +75,14 @@ int racing()
             cars[i].findNextCheckpoint(); 
         }
        
+        for (int collisionCheck = 0; collisionCheck < numOfCars; collisionCheck++)
+        {
+            for (int checkAgainst = 0; checkAgainst < numOfCars; checkAgainst++)
+            {
+                cars[collisionCheck].checkForCollisionAgainst(cars[checkAgainst].getPosition()); 
+            }
+        }
+
      
 
 

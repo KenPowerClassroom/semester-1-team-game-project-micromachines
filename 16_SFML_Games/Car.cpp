@@ -1,10 +1,6 @@
 #include "Car.h"
 #include <iostream>
-newCar::newCar()
-{
-   /* m_speed = 2; 
-    m_angle = 0;*/
-}
+
 
 newCar::newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_speed, sf::Color t_carColor)
 {
@@ -14,25 +10,16 @@ newCar::newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_
 
     carController.setPosition(t_startPosition); 
     carController.setSpeed(t_speed); 
-
-	/*m_position =  t_startPosition; 
-	m_speed = t_speed; */
 }
 
 void newCar::setPosition(sf::Vector2f t_position)
 {
-    //carController.setPosition(t_position);
 	m_body.setPosition(t_position); 
 }
 
 
-
-
-
 void newCar::findNextCheckpoint()
 {
-
-
     float tx = points[checkpoint][0];
     float ty = points[checkpoint][1];
    
@@ -41,7 +28,6 @@ void newCar::findNextCheckpoint()
         checkpoint = (checkpoint + 1) % num;
         
     }
-  
 }
 
 sf::Vector2f newCar::getPosition()
@@ -88,6 +74,11 @@ void newCar::steer()
     }
 
     carController.inputHandler(Up, Down, Right, Left); 
+}
+
+void newCar::checkForCollisionAgainst(sf::Vector2f t_otherCarPosition)
+{
+    carController.collisionHandler(t_otherCarPosition); 
 }
 
 

@@ -110,6 +110,33 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
 
  }
 
+ void carController::collisionHandler(sf::Vector2f t_otherCarPosition)
+ {
+     const int CAR_HITBOX = 4 * carRadius * carRadius;
+     int distanceBetweenX = 0, distanceBetweenY = 0;
+
+     // if the distance between the cars is lesser than the radisu 
+     while (distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY < CAR_HITBOX)
+     {
+         // pushes car to the side by a tenth of the distance between the cars 
+         m_position.x += distanceBetweenX / 10.0;
+         m_position.x += distanceBetweenY / 10.0;
+         t_otherCarPosition.x -= distanceBetweenX / 10.0;
+         t_otherCarPosition.y -= distanceBetweenY / 10.0;
+
+         distanceBetweenX = m_position.x - t_otherCarPosition.x;
+         distanceBetweenY = m_position.y - t_otherCarPosition.y;
+
+
+         // if the cars are touching 
+         if (distanceBetweenX == 0 && distanceBetweenY == 0)
+         {
+             break;
+         }
+
+     }
+ }
+
 
  sf::Vector2f carController::getPosition()
  {
