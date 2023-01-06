@@ -19,7 +19,7 @@ public:
 
     void draw(sf::RenderWindow &t_window); 
 
-    void steer(); 
+    void steer(bool t_onTrack); 
 
     void checkForCollisionAgainst(sf::Vector2f t_otherCarPosition); 
 

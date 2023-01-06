@@ -11,7 +11,7 @@ public:
     /// changing is speed and angle 
     /// </summary>
     /// parameters taken in are used to determine what input was used by player
-    void inputHandler(bool Up, bool Down, bool Right, bool Left);
+    void inputHandler(bool Up, bool Down, bool Right, bool Left, bool t_onTrack);
 
     /// <summary>
     /// adjusts angle of the car so it moves towards the checkpoint 

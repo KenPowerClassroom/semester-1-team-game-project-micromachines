@@ -51,7 +51,7 @@ void newCar::draw(sf::RenderWindow &t_window)
     t_window.draw(m_body); 
 }
 
-void newCar::steer()
+void newCar::steer(bool t_onTrack)
 {
 
     bool Up = 0, Down = 0,  Right= 0, Left = 0;
@@ -73,7 +73,7 @@ void newCar::steer()
          Left = 1;
     }
 
-    carController.inputHandler(Up, Down, Right, Left); 
+    carController.inputHandler(Up, Down, Right, Left, t_onTrack); 
 }
 
 void newCar::checkForCollisionAgainst(sf::Vector2f t_otherCarPosition)

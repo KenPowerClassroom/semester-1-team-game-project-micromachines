@@ -4,9 +4,23 @@ carController::carController()
 {
 }
 
-void carController::inputHandler(bool Up, bool Down, bool Right, bool Left)
+void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool t_onTrack)
 {
-    std::cout << m_angle << std::endl; 
+    //std::cout << m_angle << std::endl; 
+
+    if (t_onTrack == true)
+    {
+        m_maxSpeed = 12.0;
+    }
+    if (t_onTrack == false)//if the car us off the track cap its movement speed
+    {
+        m_maxSpeed = 6.0;
+        if (m_speed >= m_maxSpeed)// if the car is already above the capped speed slow it down
+        {
+            m_speed = m_maxSpeed;
+        }
+    }
+    
     //car movement
     if (Up && m_speed < m_maxSpeed)
     {

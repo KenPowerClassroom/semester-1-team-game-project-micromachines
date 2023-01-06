@@ -49,10 +49,15 @@ int racing()
     // screen 
 
     sf::RectangleShape trackOutline;//rectangle used to check if the car is "on" the track
-    trackOutline.setSize(sf::Vector2f(200, 2740));
+    trackOutline.setSize(sf::Vector2f(200, 5480));
     trackOutline.setOutlineColor(sf::Color::Green);
     trackOutline.setOutlineThickness(5);
     trackOutline.setFillColor(sf::Color::Color(0, 0, 0, 0));
+
+    sf::CircleShape playerTracker;//used so global bounds will function
+    playerTracker.setRadius(1);
+
+    bool playerOnTrack = false;
 
     // game loop 
     while (app.isOpen())
@@ -65,7 +70,7 @@ int racing()
         }
 
         // movememnt 
-        cars[0].steer(); 
+        cars[0].steer(playerOnTrack);//now sends over if the car is on the track
        
 
         for (int i = 0; i < numOfCars; i++)
@@ -104,7 +109,17 @@ int racing()
             offsetY = cars[0].getPosition().y - minScreenHeight;
         }
 
-        std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
+        playerTracker.setPosition(cars[0].getPosition().x + 22, cars[0].getPosition().y + 22);//sets the tracker to the car and centers it
+
+
+        if (trackOutline.getGlobalBounds().intersects(playerTracker.getGlobalBounds()))//used to check if the player is still on the track
+        {
+            playerOnTrack = true;
+            std::cout << "Player is on track\n";
+        }
+        else playerOnTrack = false;
+
+        //std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
         sBackground.setPosition(-offsetX, -offsetY);
         trackOutline.setPosition(-offsetX + 220, -offsetY + 480);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
 
