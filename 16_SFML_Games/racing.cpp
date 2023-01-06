@@ -48,7 +48,11 @@ int racing()
     float maxScreenHeight = 3400;
     // screen 
 
-
+    sf::RectangleShape trackOutline;//rectangle used to check if the car is "on" the track
+    trackOutline.setSize(sf::Vector2f(200, 2740));
+    trackOutline.setOutlineColor(sf::Color::Green);
+    trackOutline.setOutlineThickness(5);
+    trackOutline.setFillColor(sf::Color::Color(0, 0, 0, 0));
 
     // game loop 
     while (app.isOpen())
@@ -102,8 +106,10 @@ int racing()
 
         std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
         sBackground.setPosition(-offsetX, -offsetY);
+        trackOutline.setPosition(-offsetX + 220, -offsetY + 480);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
 
         app.draw(sBackground);
+        app.draw(trackOutline);
 
         Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
 
@@ -119,7 +125,7 @@ int racing()
         if (cars[0].getPosition().x <290)
         {
             i;
-            break;
+            //break;
         }
         else
         {
