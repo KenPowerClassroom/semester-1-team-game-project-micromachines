@@ -96,6 +96,7 @@ int racing()
 
 
         app.clear(Color::Black);
+        app.draw(sBackground);
 
         // Border locking X
         if (cars[0].getPosition().x > minScreenWidth && cars[0].getPosition().x < maxScreenWidth)
@@ -109,22 +110,51 @@ int racing()
             offsetY = cars[0].getPosition().y - minScreenHeight;
         }
 
-        playerTracker.setPosition(cars[0].getPosition().x + 22, cars[0].getPosition().y + 22);//sets the tracker to the car and centers it
+        playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
 
 
-        if (trackOutline.getGlobalBounds().intersects(playerTracker.getGlobalBounds()))//used to check if the player is still on the track
+        for (int index = 0; index < 3; index++)
         {
-            playerOnTrack = true;
-            std::cout << "Player is on track\n";
-        }
-        else playerOnTrack = false;
+            if (index == 0)//left straight
+            {
+                trackOutline.setSize(sf::Vector2f(300, 5480));
+                trackOutline.setPosition(-offsetX + 220, -offsetY + 480);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
+                trackOutline.setOutlineColor(sf::Color::Green);
+                app.draw(trackOutline);
+            }
+            if (index == 1)//top straight
+            {
+                trackOutline.setSize(sf::Vector2f(1840, 500));
+                trackOutline.setPosition(-offsetX + 380, -offsetY + 330);
+                trackOutline.setOutlineColor(sf::Color::Blue);
+                app.draw(trackOutline);
+            }
+            if (index == 2)//top left corner
+            {
+                trackOutline.setSize(sf::Vector2f(400, 500));
+                trackOutline.setRotation(45);
+                trackOutline.setPosition(-offsetX + 390, -offsetY + 320);
+                trackOutline.setOutlineColor(sf::Color::Cyan);
+                app.draw(trackOutline);
+                trackOutline.setRotation(0);
+            }
 
+
+            if (trackOutline.getGlobalBounds().intersects(playerTracker.getGlobalBounds()))//used to check if the player is still on the track
+            {
+                playerOnTrack = true;
+                std::cout << "Player is on track\n";
+                break;
+            }
+            else playerOnTrack = false;
+        }
+
+        std::cout << "spacer\n";
         //std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
         sBackground.setPosition(-offsetX, -offsetY);
-        trackOutline.setPosition(-offsetX + 220, -offsetY + 480);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
+      
 
-        app.draw(sBackground);
-        app.draw(trackOutline);
+
 
         Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
 
