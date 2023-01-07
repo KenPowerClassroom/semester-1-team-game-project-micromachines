@@ -74,15 +74,15 @@ TEST(CarController, findTarget)
 	EXPECT_TRUE(car.foundTarget({ 300,610 })); 
 }
 
-//TEST(Laps, checkPointColorChange)
-//{
-//	
-//	bool testPassed{ false }; 
-//	
-//	Laps lap;
-//	/*newCar car({2,2},2);*/
-//
-//	EXPECT_TRUE(testPassed); 
-//
-//	
-//}
+TEST(Laps, checkPointColorChange)
+{
+	
+	bool testPassed{ false }; 
+	
+	Laps lap;
+	newCar car({2,2},2);
+
+	EXPECT_TRUE(testPassed); 
+
+	
+}
