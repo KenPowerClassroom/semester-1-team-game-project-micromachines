@@ -1,6 +1,16 @@
 #include "pch.h"
-#include "../carController.h"
+
+#include <SFML/Graphics.hpp>
+
+#include "../Car.h"
+
 #include "../carController.cpp"
+
+#include "../Laps.h"
+
+
+
+
 TEST(CarController, moveCarForward) 
 {
 	carController car;
@@ -63,3 +73,16 @@ TEST(CarController, findTarget)
 
 	EXPECT_TRUE(car.foundTarget({ 300,610 })); 
 }
+
+//TEST(Laps, checkPointColorChange)
+//{
+//	
+//	bool testPassed{ false }; 
+//	
+//	Laps lap;
+//	/*newCar car({2,2},2);*/
+//
+//	EXPECT_TRUE(testPassed); 
+//
+//	
+//}

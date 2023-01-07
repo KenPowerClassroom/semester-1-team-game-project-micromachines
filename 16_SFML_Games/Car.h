@@ -5,6 +5,8 @@
 class newCar
 {
 public:
+    newCar(sf::Vector2f t_startPosition, float t_speed);
+
     newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_speed, sf::Color t_carColor);
 
     void setPosition(sf::Vector2f t_position); 
@@ -23,7 +25,7 @@ public:
 
     void checkForCollisionAgainst(sf::Vector2f t_otherCarPosition); 
 
-   
+    sf::Sprite getSprite(); 
 private:
 
     sf::Sprite m_body; 

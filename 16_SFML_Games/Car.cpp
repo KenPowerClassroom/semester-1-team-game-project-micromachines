@@ -2,6 +2,12 @@
 #include <iostream>
 
 
+newCar::newCar(sf::Vector2f t_startPosition, float t_speed)
+{
+    carController.setPosition(t_startPosition);
+    carController.setSpeed(t_speed);
+}
+
 newCar::newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_speed, sf::Color t_carColor)
 {
 	m_body.setTexture(t_carTexture); 
@@ -79,6 +85,11 @@ void newCar::steer()
 void newCar::checkForCollisionAgainst(sf::Vector2f t_otherCarPosition)
 {
     carController.collisionHandler(t_otherCarPosition); 
+}
+
+sf::Sprite newCar::getSprite()
+{
+    return m_body;
 }
 
 

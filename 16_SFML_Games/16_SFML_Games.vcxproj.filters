@@ -65,6 +65,9 @@
     <ClCompile Include="carController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Laps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connector.hpp">
@@ -77,6 +80,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="carController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Laps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
