@@ -113,7 +113,7 @@ int racing()
         playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
 
 
-        for (int index = 0; index < 3; index++)
+        for (int index = 0; index < 5; index++)
         {
             if (index == 0)//left straight
             {
@@ -129,13 +129,27 @@ int racing()
                 trackOutline.setOutlineColor(sf::Color::Blue);
                 app.draw(trackOutline);
             }
-            if (index == 2)//top left corner
+            if (index == 2)//first corner
             {
                 trackOutline.setSize(sf::Vector2f(400, 500));
                 trackOutline.setRotation(45);
                 trackOutline.setPosition(-offsetX + 390, -offsetY + 320);
                 trackOutline.setOutlineColor(sf::Color::Cyan);
                 app.draw(trackOutline);
+                trackOutline.setRotation(0);
+            }
+            if (index == 3)//2nd corner
+            {
+                trackOutline.setSize(sf::Vector2f(650, 400));
+                trackOutline.setRotation(45);
+                trackOutline.setPosition(-offsetX + 1950, -offsetY + 500);
+                trackOutline.setRotation(0);
+            }
+            if (index == 4)//3rd straight
+            {
+                trackOutline.setSize(sf::Vector2f(450, 4000));
+                trackOutline.setRotation(0);
+                trackOutline.setPosition(-offsetX + 2200, -offsetY + 750);
                 trackOutline.setRotation(0);
             }
 
