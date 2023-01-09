@@ -117,6 +117,7 @@ int racing()
     
         // screen 
         lap.updatePosition(offsetX, offsetY ); 
+        lap.checkForCheckpointReset();
         for (int i = 0; i < numOfCars; i++)
         {
             cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });

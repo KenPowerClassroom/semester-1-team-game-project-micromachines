@@ -9,7 +9,7 @@ public:
     void draw(sf::RenderWindow & t_window); 
     void updatePosition(int t_offsetX, int t_offsetY); 
     void checkForCollision(sf::Sprite t_playerCar); 
-
+    void checkForCheckpointReset();
 
     // soley for purpose of test 
     bool getColorOfFirstCheckpoint(int t_checkpoint); 

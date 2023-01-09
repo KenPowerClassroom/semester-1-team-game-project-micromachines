@@ -44,6 +44,27 @@ void Laps::checkForCollision(sf::Sprite t_playerCar)
 	}
 }
 
+void Laps::checkForCheckpointReset()
+{
+	int checkPointsPassed = 0;
+	for (int i = 0; i < num; i++)
+	{
+		if (m_checpointCircle[i].getFillColor() == Green)
+		{
+			checkPointsPassed++; 
+		}
+	}
+	if (checkPointsPassed == num)
+	{
+		for (int i = 0; i < num; i++)
+		{
+			m_checpointCircle[i].setFillColor(Red);
+			
+		}
+	}
+	
+}
+
 bool Laps::getColorOfFirstCheckpoint(int t_checkpoint)
 {
 	if (m_checpointCircle[t_checkpoint].getFillColor() == Green)
