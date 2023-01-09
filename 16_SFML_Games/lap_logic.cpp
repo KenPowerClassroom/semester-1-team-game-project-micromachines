@@ -1,27 +1,33 @@
 #include "lap_logic.h"
 #include <cmath>
 #include <iostream>
-bool LapsLogic::collisionCheck(float t_x, float t_y)
+float LapsLogicController::getX(int t_desiredCheckpoint)
 {
-    
-    float distance; 
-    float distanceSquared;
+    return points[t_desiredCheckpoint][m_x];
+}
 
-    int x = 0;
-    int y = 1;
-    for (int i = 0; i < 8; i++)
+float LapsLogicController::getY(int t_desiredCheckpoint)
+{
+    return points[t_desiredCheckpoint][m_y];
+}
+
+bool LapsLogicController::collisionCheck(float t_x, float t_y, int t_desiredCheckpoint)
+{
+    float carSize = 22; 
+
+    float distance = (points[t_desiredCheckpoint][m_x] + m_checkpointRadius - t_x) * (points[t_desiredCheckpoint][m_x] + m_checkpointRadius - t_x) 
+                    + (points[t_desiredCheckpoint][m_y] + m_checkpointRadius - t_y) * (points[t_desiredCheckpoint][m_y] + m_checkpointRadius - t_y);
+
+    float distanceSquared = sqrt(distance);
+
+    if (distanceSquared <= m_checkpointRadius+carSize)
     {
-       distance = (points[i][x]+50 - t_x) * (points[i][x] + 50 - t_x) + (points[i][y] - t_y) * (points[i][y] - t_y);
-       distanceSquared = sqrt(distance);
-       if (i == 0)
-       {
-           std::cout << "Distance: "<<distanceSquared << std::endl;
-       }
-       if (distanceSquared <= 100)
-       {
-           std::cout << "you have collide with checkpoint" << std::endl; 
-       }
+        std::cout << "you have collide with checkpoint" << std::endl;
+        return true;
+    }
+    else
+    {
+        return false;
     }
     
-    return false;
 }

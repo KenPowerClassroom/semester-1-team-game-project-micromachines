@@ -1,12 +1,10 @@
 #include "pch.h"
 
-//#include <SFML/Graphics.hpp>
-
-#include "../Car.h"
-
+#include "../carController.h"
 #include "../carController.cpp"
 
-#include "../Laps.h"
+#include"../lap_logic.h"
+#include"../lap_logic.cpp"
 
 
 
@@ -74,15 +72,16 @@ TEST(CarController, findTarget)
 	EXPECT_TRUE(car.foundTarget({ 300,610 })); 
 }
 
-TEST(Laps, checkPointColorChange)
+TEST(LapsLogicController, carActivatesCheckpoints)
 {
-	
-	bool testPassed{ false }; 
-	
-	Laps lap;
-	newCar car({2,2},2);
+	LapsLogicController lap;
+	carController car;
+	int checkPoint = 0;
 
-	EXPECT_TRUE(testPassed); 
-
+	car.setPosition({ 338, 840 });
+	car.setSpeed(2);
+	car.getUpdatedPositioning();
 	
+	
+	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, checkPoint));
 }
