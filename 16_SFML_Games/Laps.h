@@ -26,6 +26,8 @@ public:
     /// checks whether a full lap has been done on the checkpoints and whether to change back there color
     /// </summary>
     void checkForCheckpointReset();
+
+    void textSetUp(); 
 private:
     // stores positions and takes care of collision
     LapsLogicController elLapo; 
@@ -35,9 +37,10 @@ private:
     sf::CircleShape m_checpointCircle[8]; 
 
     // custom colors, which opacity will be changed in contrstuctor
-
     sf::Color Green = sf::Color::Green;
     sf::Color Red =  sf::Color::Red;
 
-    
+    // displayed text of laps done
+   //sf::Text m_lapsText; 
+ 
 };

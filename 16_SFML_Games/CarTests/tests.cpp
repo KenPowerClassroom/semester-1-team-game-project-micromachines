@@ -78,10 +78,39 @@ TEST(LapsLogicController, carActivatesCheckpoints)
 	carController car;
 	int checkPoint = 0;
 
-	car.setPosition({ 338, 840 });
-	car.setSpeed(2);
+	// setting car position just before checkpoint
+	car.setPosition({ 338, 836 });
+	car.setSpeed(7);
+	car.inputHandler(true, false, false, false);
 	car.getUpdatedPositioning();
 	
 	
 	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, checkPoint));
+}
+
+
+TEST(LapsLogicController, carCantSkipCheckPoint)
+{
+	LapsLogicController lap;
+	carController car;
+
+	int validNextChecpoint = 0; 
+	int inavlidNextCheckpoint = 1;
+	
+
+	// just before second checkpoint
+	car.setPosition({ 1370,658 });
+	car.setSpeed(7);
+	car.inputHandler(true, false, false, false);
+	car.getUpdatedPositioning();
+
+	EXPECT_FALSE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, 0));
+	
+	// just before first checkpoint
+	car.setPosition({ 338, 836 });
+	car.setSpeed(7);
+	car.inputHandler(true, false, false, false);
+	car.getUpdatedPositioning();
+
+	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, validNextChecpoint));
 }

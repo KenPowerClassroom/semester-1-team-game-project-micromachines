@@ -19,6 +19,14 @@ public:
     float getY(int t_desiredCheckpoint);
 
     /// <summary>
+    /// checks if the checkpoint player goes to is a valid one, 
+    /// whether they went from checkpoint 1 - 2 *valid
+    /// or if they went from checkpoint 1 - 3 *invalid
+    /// </summary>
+    /// <returns></returns>
+    bool isNextValidCheckPoint( int t_nextCheckpoint);
+
+    /// <summary>
     /// collision logic
     /// gets the distance squared and checks if it is smaller than the size of the circle and car addedtogether
     /// </summary>
@@ -28,13 +36,18 @@ public:
     /// <returns></returns>
     bool collisionCheck(float t_x, float t_y, int t_desiredCheckpoint);
 
+    /// <summary>
+    /// checks if all checkpoints have been passed by player
+    /// </summary>
+    /// <returns> whether checkpoints have been passed or not</returns>
+    bool allcheckPointsPassed(); 
 private:
 
-    int m_checkpointRadius = 100;
-    int NUM_OF_CHECKPOINTS = 8;
-    
+    int lapsCompleted = 0; 
+
     int m_x = 0; 
     int m_y = 1;
+    int NUM_OF_CHECKPOINTS = 8;
     float points[8][2] = 
     {
         {300 - 75, 610},
@@ -46,7 +59,15 @@ private:
         {2560 - 290,3150},
         {500, 3300 - 100} 
     };
+    bool m_checkPointsPassed[8] = {
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false };
 
-    
-   
+    int m_playerCurrentLap = -1; 
 };

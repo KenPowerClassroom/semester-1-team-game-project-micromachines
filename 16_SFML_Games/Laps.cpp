@@ -40,29 +40,25 @@ void Laps::checkForCollision( sf::Vector2f t_carPosition)
 		if (elLapo.collisionCheck(t_carPosition.x, t_carPosition.y, i))
 		{
 			m_checpointCircle[i].setFillColor(Green); 
+			break; 
 		}
 	}
 }
 
 void Laps::checkForCheckpointReset()
 {
-	int checkPointsPassed = 0;
-	for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
-	{
-		if (m_checpointCircle[i].getFillColor() == Green)
-		{
-			checkPointsPassed++; 
-		}
-	}
-	if (checkPointsPassed == NUM_OF_CHECKPOINTS)
+	if (elLapo.allcheckPointsPassed())
 	{
 		for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
 		{
 			m_checpointCircle[i].setFillColor(Red);
-			
 		}
 	}
-	
+}
+
+void Laps::textSetUp()
+{
+
 }
 
 
