@@ -69,7 +69,7 @@ int racing()
 
         // movememnt 
         cars[0].steer(); 
-        lap.checkForCollision(cars[0].getSprite()); 
+        lap.checkForCollision(cars[0].getSprite(), cars[0].getPosition());
 
         for (int i = 0; i < numOfCars; i++)
         {

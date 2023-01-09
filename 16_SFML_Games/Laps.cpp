@@ -33,8 +33,9 @@ void Laps::updatePosition(int t_offsetX, int t_offsetY)
 	
 }
 
-void Laps::checkForCollision(sf::Sprite t_playerCar)
+void Laps::checkForCollision(sf::Sprite t_playerCar,  sf::Vector2f t_carPosition)
 {
+	elLapo.collisionCheck(t_carPosition.x, t_carPosition.y);
 	for (int i = 0; i < num; i++)
 	{
 		if (m_checpointCircle[i].getGlobalBounds().intersects(t_playerCar.getGlobalBounds()))
