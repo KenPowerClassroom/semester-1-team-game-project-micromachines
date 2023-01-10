@@ -4,8 +4,6 @@
 #include "Laps.h"
 using namespace sf;
 
-
-
 int racing()
 {
 
@@ -18,7 +16,6 @@ int racing()
     m_checpointCircle.setFillColor(sf::Color::Red);
     m_checpointCircle.setRadius(50);
      m_checpointCircle.setPosition({ 360, 700 });
-
     // visual set up for cars 
     Texture t1, t2, t3;
     Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
@@ -33,10 +30,11 @@ int racing()
     
     sBackground.scale(2, 2);
     Laps lap; 
-    const int numOfCars = 5;
+    
+    const int NUM_OF_CARS = 5;
     std::vector<newCar>cars; 
     
-    for (int i = 0; i < numOfCars; i++)
+    for (int i = 0; i < NUM_OF_CARS; i++)
     {
         float x = 300 + i * 50;
         float y = 1700 + i * 80;
@@ -69,22 +67,22 @@ int racing()
 
         // movememnt 
         cars[0].steer(); 
-        lap.checkForCollision( cars[0].getPosition());
+        
 
-        for (int i = 0; i < numOfCars; i++)
+        for (int i = 0; i < NUM_OF_CARS; i++)
         {
             cars[i].updatePosition();
         }
         // speed management  
 
-        for (int  i = 1; i < numOfCars; i++)
+        for (int  i = 1; i < NUM_OF_CARS; i++)
         {
             cars[i].findNextCheckpoint(); 
         }
        
-        for (int collisionCheck = 0; collisionCheck < numOfCars; collisionCheck++)
+        for (int collisionCheck = 0; collisionCheck < NUM_OF_CARS; collisionCheck++)
         {
-            for (int checkAgainst = 0; checkAgainst < numOfCars; checkAgainst++)
+            for (int checkAgainst = 0; checkAgainst < NUM_OF_CARS; checkAgainst++)
             {
                 cars[collisionCheck].checkForCollisionAgainst(cars[checkAgainst].getPosition()); 
             }
@@ -94,31 +92,41 @@ int racing()
 
 
         app.clear(Color::Black);
-
         // Border locking X
         if (cars[0].getPosition().x > minScreenWidth && cars[0].getPosition().x < maxScreenWidth)
         {
             offsetX = cars[0].getPosition().x - minScreenWidth;
         }
-
         // Border locking Y
         if (cars[0].getPosition().y > minScreenHeight && cars[0].getPosition().y < maxScreenHeight)
         {
             offsetY = cars[0].getPosition().y - minScreenHeight;
         }
-
         std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
         sBackground.setPosition(-offsetX, -offsetY);
-        
-        
         app.draw(sBackground);
+
+
+
+        // laps
+      
         lap.draw(app); 
-        //app.draw(m_checpointCircle); 
+        lap.updatePosition(offsetX, offsetY);
+        for (int i = 0; i < NUM_OF_CARS; i++)
+        {
+            lap.checkForCollision(cars[i].getPosition(), cars[i].getCurrentCheckpoint(), i);
+        }
+        for (int i = 0; i < NUM_OF_CARS; i++)
+        {
+            lap.checkForCheckpointReset(cars[i].getCurrentCheckpoint(), cars[i].getCurrentLap(), i);
+        }
+        std::cout << "Car 2 Lap: " << cars[0].getCurrentLap() << " Checkpoint: " << cars[0].getCurrentCheckpoint() << std::endl;
+        // laps
+
     
         // screen 
-        lap.updatePosition(offsetX, offsetY ); 
-        lap.checkForCheckpointReset();
-        for (int i = 0; i < numOfCars; i++)
+        
+        for (int i = 0; i < NUM_OF_CARS; i++)
         {
             cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });
             cars[i].setRotation();
@@ -131,3 +139,4 @@ int racing()
 
     return 0;
 }
+

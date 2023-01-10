@@ -9,14 +9,14 @@ public:
     /// </summary>
     /// <param name="t_desiredCheckpoint">which checkpoint in array you wish to check</param>
     /// <returns></returns>
-    float getX(int t_desiredCheckpoint);
+    float getCheckpointX(int t_desiredCheckpoint);
 
     /// <summary>
     /// gets the current y axis position of the the desired checkpoint 
     /// </summary>
     /// <param name="t_desiredCheckpoint"> which checkpoint in array you wish to check </param>
     /// <returns></returns>
-    float getY(int t_desiredCheckpoint);
+    float getCheckPointY(int t_desiredCheckpoint);
 
     /// <summary>
     /// checks if the checkpoint player goes to is a valid one, 
@@ -24,7 +24,7 @@ public:
     /// or if they went from checkpoint 1 - 3 *invalid
     /// </summary>
     /// <returns></returns>
-    bool isNextValidCheckPoint( int t_nextCheckpoint);
+    bool isNextValidCheckPoint( int t_nextCheckpoint, int& t_carsCurrentCheckpoint);
 
     /// <summary>
     /// collision logic
@@ -34,13 +34,15 @@ public:
     /// <param name="t_y"> current position of the car on y axis </param>
     /// <param name="t_desiredCheckpoint"> which checkpoint is being checked for a coliison </param>
     /// <returns></returns>
-    bool collisionCheck(float t_x, float t_y, int t_desiredCheckpoint);
+    bool collisionCheck(float t_x, float t_y, int t_desiredCheckpoint, int& t_carsCurrentCheckpoint);
 
     /// <summary>
     /// checks if all checkpoints have been passed by player
     /// </summary>
     /// <returns> whether checkpoints have been passed or not</returns>
-    bool allcheckPointsPassed(); 
+    bool allcheckPointsPassed(int &t_carsCurrentCheckpoint, int& t_lapsCompleted);
+
+
 private:
 
     int lapsCompleted = 0; 
@@ -59,15 +61,7 @@ private:
         {2560 - 290,3150},
         {500, 3300 - 100} 
     };
-    bool m_checkPointsPassed[8] = {
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false };
 
     int m_playerCurrentLap = -1; 
+
 };

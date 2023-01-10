@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "lap_logic.h"
-
 class Laps
 {
 
@@ -20,17 +19,17 @@ public:
     /// checks whether a checkpoints color should be changed 
     /// </summary>
     /// <param name="t_carPosition"> position of player car which will be only car to effect the checpoints color</param>
-    void checkForCollision( sf::Vector2f t_carPosition); 
+    void checkForCollision( sf::Vector2f t_carPosition, int& t_currentCheckpoint, int t_playerCar);
 
     /// <summary>
     /// checks whether a full lap has been done on the checkpoints and whether to change back there color
     /// </summary>
-    void checkForCheckpointReset();
+    void checkForCheckpointReset(int& t_currentCheckpoint, int& t_lapsCompleted,  int t_playerCar);
 
     void textSetUp(); 
 private:
     // stores positions and takes care of collision
-    LapsLogicController elLapo; 
+    LapsLogicController lap; 
 
     // array of circle shapes that makes up the chekpoints 
     int NUM_OF_CHECKPOINTS = 8;
@@ -39,8 +38,4 @@ private:
     // custom colors, which opacity will be changed in contrstuctor
     sf::Color Green = sf::Color::Green;
     sf::Color Red =  sf::Color::Red;
-
-    // displayed text of laps done
-   //sf::Text m_lapsText; 
- 
 };

@@ -154,3 +154,13 @@ float carController::getAngle()
 {
     return m_angle * 180 / 3.141593;
 }
+
+int& carController::getCurrentCHeckPoint()
+{
+    return m_currentCheckpoint; 
+}
+
+int& carController::getCurrentLap()
+{
+    return m_lapsCompleted;
+}

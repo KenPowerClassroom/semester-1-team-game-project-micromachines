@@ -1,19 +1,19 @@
 #include "lap_logic.h"
 #include <cmath>
 #include <iostream>
-float LapsLogicController::getX(int t_desiredCheckpoint)
+float LapsLogicController::getCheckpointX(int t_desiredCheckpoint)
 {
     return points[t_desiredCheckpoint][m_x];
 }
 
-float LapsLogicController::getY(int t_desiredCheckpoint)
+float LapsLogicController::getCheckPointY(int t_desiredCheckpoint)
 {
     return points[t_desiredCheckpoint][m_y];
 }
 
-bool LapsLogicController::isNextValidCheckPoint( int t_nextCheckpoint)
+bool LapsLogicController::isNextValidCheckPoint( int t_nextCheckpoint,int &t_carsCurrentCheckpoint)
 {
-    if (m_playerCurrentLap + 1 == t_nextCheckpoint)
+    if (t_carsCurrentCheckpoint + 1 == t_nextCheckpoint)
     {
         return true; 
     }
@@ -23,9 +23,9 @@ bool LapsLogicController::isNextValidCheckPoint( int t_nextCheckpoint)
     }
 }
 
-bool LapsLogicController::collisionCheck(float t_x, float t_y, int t_desiredCheckpoint)
+bool LapsLogicController::collisionCheck(float t_x, float t_y, int t_desiredCheckpoint, int& t_carsCurrentCheckpoint)
 {
-    if (isNextValidCheckPoint(t_desiredCheckpoint))
+    if (isNextValidCheckPoint(t_desiredCheckpoint, t_carsCurrentCheckpoint))
     {
         float carSize = 22;
         float checkpointRadius = 100;
@@ -36,8 +36,8 @@ bool LapsLogicController::collisionCheck(float t_x, float t_y, int t_desiredChec
 
         if (distanceSquared <= checkpointRadius + carSize)
         {
-            m_checkPointsPassed[t_desiredCheckpoint] = true;
-            m_playerCurrentLap++;
+            //m_checkPointsPassed[t_desiredCheckpoint] = true;
+            t_carsCurrentCheckpoint++;
             return true;
         }
     }
@@ -48,29 +48,13 @@ bool LapsLogicController::collisionCheck(float t_x, float t_y, int t_desiredChec
     
 }
 
-bool LapsLogicController::allcheckPointsPassed()
+bool LapsLogicController::allcheckPointsPassed(int& t_carsCurrentCheckpoint, int& t_lapsCompleted)
 {
-    int passed = 0; 
-    for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
+    if(t_carsCurrentCheckpoint == 7)
     {
-        if (m_checkPointsPassed[i])
-        {
-            passed++; 
-        }
-    }
-
-    if (passed == NUM_OF_CHECKPOINTS)
-    {
-        // resets variables so lap can be reset
-        for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
-        {
-            m_playerCurrentLap = -1; 
-            m_checkPointsPassed[i] = false;
-        }
+        t_carsCurrentCheckpoint = -1;
+        t_lapsCompleted++;
         return true;
     }
-
-
-
     return false;
 }

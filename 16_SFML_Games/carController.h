@@ -39,6 +39,8 @@ public:
     sf::Vector2f getPosition();
     float getSpeed();
     float getAngle();
+    int& getCurrentCHeckPoint(); 
+    int& getCurrentLap();
 private:
 
     sf::Vector2f m_position; 
@@ -50,5 +52,9 @@ private:
     float m_acceleration = 0.2;
     float m_deceleration = 0.3;
     float m_turnSpeed = 0.08;
+
+    // lap & checkpoint data 
+    int m_currentCheckpoint = -1; 
+    int m_lapsCompleted = 0;
 
 };

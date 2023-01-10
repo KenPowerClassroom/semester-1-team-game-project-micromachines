@@ -41,6 +41,16 @@ sf::Vector2f newCar::getPosition()
     return carController.getPosition();
 }
 
+int& newCar::getCurrentCheckpoint()
+{
+    return carController.getCurrentCHeckPoint(); 
+}
+
+int& newCar::getCurrentLap()
+{
+    return carController.getCurrentLap();
+}
+
 void newCar::setRotation()
 {
     m_body.setRotation(carController.getAngle());

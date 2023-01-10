@@ -85,7 +85,7 @@ TEST(LapsLogicController, carActivatesCheckpoints)
 	car.getUpdatedPositioning();
 	
 	
-	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, checkPoint));
+	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, checkPoint, car.getCurrentCHeckPoint()));
 }
 
 
@@ -104,7 +104,7 @@ TEST(LapsLogicController, carCantSkipCheckPoint)
 	car.inputHandler(true, false, false, false);
 	car.getUpdatedPositioning();
 
-	EXPECT_FALSE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, 0));
+	EXPECT_FALSE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, inavlidNextCheckpoint, car.getCurrentCHeckPoint()));
 	
 	// just before first checkpoint
 	car.setPosition({ 338, 836 });
@@ -112,5 +112,25 @@ TEST(LapsLogicController, carCantSkipCheckPoint)
 	car.inputHandler(true, false, false, false);
 	car.getUpdatedPositioning();
 
-	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, validNextChecpoint));
+	EXPECT_TRUE(lap.collisionCheck(car.getPosition().x, car.getPosition().y, validNextChecpoint, car.getCurrentCHeckPoint()));
+}
+
+TEST(LapsLogicController, lapsCompleteWhenLastCheckpointIsPassed)
+{
+	LapsLogicController lap; 
+	carController car; 
+	int NUM_OF_CHECKPOINTS = 8;
+	car.setSpeed(1);
+	
+	for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
+	{
+		// + 10 to ensure they are in the circle
+		car.setPosition({ lap.getCheckpointX(i) + 50, lap.getCheckPointY(i) +50 });
+		car.inputHandler(true, false, false, false);
+		car.getUpdatedPositioning();
+		lap.collisionCheck(car.getPosition().x, car.getPosition().y, i, car.getCurrentCHeckPoint());
+	}
+	lap.allcheckPointsPassed(car.getCurrentCHeckPoint(), car.getCurrentLap());
+
+	EXPECT_EQ(car.getCurrentLap(), 1); 
 }
