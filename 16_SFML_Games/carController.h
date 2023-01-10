@@ -34,15 +34,17 @@ public:
     void setSpeed(float t_speed);
     void setAngle(float t_angle);
 
+    /// <summary>
+    /// return the lap and also make sure it doens't go over 3
+    /// </summary>
+    /// <returns></returns>
+    int& getCurrentLap();
 
     // get functions 
+    int& getCurrentCHeckPoint();
     sf::Vector2f getPosition();
     float getSpeed();
     float getAngle();
-    
-    int& getCurrentCHeckPoint(); 
-    int& getCurrentLap();
-
     float getMaxSpeed();
 private:
 

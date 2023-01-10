@@ -177,6 +177,10 @@ int& carController::getCurrentCHeckPoint()
 
 int& carController::getCurrentLap()
 {
+    if (m_lapsCompleted == 3)
+    {
+        m_lapsCompleted = 3;
+    }
     return m_lapsCompleted;
 }
 

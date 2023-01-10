@@ -117,6 +117,8 @@ int racing()
             std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
             sBackground.setPosition(-offsetX, -offsetY);
             app.draw(sBackground);
+
+
             // laps
             lap.draw(app);
             lap.updatePosition(offsetX, offsetY);
@@ -141,15 +143,7 @@ int racing()
 
             }
             
-            for (int i = 0; i < NUM_OF_CARS; i++)
-            {
-                if (cars[i].getCurrentLap() == 3)
-                {
-                    carsFinished++;
-                    leaderBoard.placeCarOnScoreBoard(i);
-                }
-            }
-
+           
             if (carsFinished == NUM_OF_CARS)
             {
                 currentGamestate = ScoreBoard;
@@ -172,13 +166,25 @@ int racing()
                 cars[i].draw(app); 
 
             }
-            
+
+            for (int i = 0; i < NUM_OF_CARS; i++)
+            {
+                if (cars[i].getCurrentLap() == 3)
+                {
+                    carsFinished++;
+                    leaderBoard.placeCarOnScoreBoard(i);
+                }
+            }
+
             
         }
         if (currentGamestate == ScoreBoard)
         {
             leaderBoard.setUpFinalScoreBoards();
+
+           
             leaderBoard.draw(app);
+            sBackground.setPosition(-offsetX, -offsetY);
         }
         // screen 
         app.display();
