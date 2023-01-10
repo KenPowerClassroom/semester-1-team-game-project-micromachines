@@ -160,42 +160,19 @@ int racing()
             }
         
 
-     
-
-
-            app.clear(Color::Black);
-            app.draw(sBackground);
-
-            // Border locking X
-            if (cars[0].getPosition().x > minScreenWidth && cars[0].getPosition().x < maxScreenWidth)
-            {
-                offsetX = cars[0].getPosition().x - minScreenWidth;
-            }
-
-            // Border locking Y
-            if (cars[0].getPosition().y > minScreenHeight && cars[0].getPosition().y < maxScreenHeight)
-            {
-                offsetY = cars[0].getPosition().y - minScreenHeight;
-            }
-
+ 
             playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
-
-            sBackground.setPosition(-offsetX, -offsetY);
-        
-
-
-
-            Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
+            
 
             // screen 
-            for (int i = 0; i < numOfCars; i++)
+            for (int i = 0; i < NUM_OF_CARS; i++)
             {
                 cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });
                 cars[i].setRotation();
                 cars[i].draw(app); 
 
             }
-
+            
             
         }
         if (currentGamestate == ScoreBoard)
