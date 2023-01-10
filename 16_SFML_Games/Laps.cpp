@@ -2,8 +2,9 @@
 
 Laps::Laps()
 {
-	Red.a = 50;
-	Green.a = 50; 
+	Red.a = 75;
+	Green.a = 75; 
+	Blue.a = 75;
 	for (int i = 0; i < NUM_OF_CHECKPOINTS; i++)
 	{
 		m_checpointCircle[i].setFillColor(Red );
@@ -51,7 +52,7 @@ void Laps::checkForCollision( sf::Vector2f t_carPosition, int &t_currentCheckpoi
 			break; 
 		}
 	}
-	
+	m_checpointCircle[7].setFillColor(Blue); // lap finish checkpoint so constantly different Color
 }
 
 void Laps::checkForCheckpointReset(int& t_currentCheckpoint, int& t_lapsCompleted, int t_car)
@@ -88,8 +89,16 @@ void Laps::textSetUp()
 
 void Laps::updateText(int t_laps, int t_checkpoints)
 {
-	m_lapsText.setString("Laps: " + std::to_string(t_laps) + "/3" +
-						 "\nCheckpoints: "+ std::to_string(t_checkpoints +1) + "/8");
+	if (t_laps <4)
+	{
+		m_lapsText.setString("Laps: " + std::to_string(t_laps) + "/3" +
+			"\nCheckpoints: " + std::to_string(t_checkpoints + 1) + "/8");
+	}
+	else
+	{
+		m_lapsText.setString("Waiting for bots to finish");
+	}
+	
 }
 
 

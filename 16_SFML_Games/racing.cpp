@@ -140,21 +140,9 @@ int racing()
                 cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });
                 cars[i].setRotation();
                 cars[i].draw(app);
+            }
+           // screen
 
-            }
-            
-           
-            if (carsFinished == NUM_OF_CARS)
-            {
-                currentGamestate = ScoreBoard;
-            }
-            else
-            {
-                carsFinished = 0;
-            }
-        
-
- 
             playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
             
 
@@ -167,24 +155,36 @@ int racing()
 
             }
 
+            // checking for amount of cars that have finished
             for (int i = 0; i < NUM_OF_CARS; i++)
             {
-                if (cars[i].getCurrentLap() == 3)
+                if (cars[i].getCurrentLap() > 2)
                 {
                     carsFinished++;
                     leaderBoard.placeCarOnScoreBoard(i);
                 }
             }
 
-            
-        }
-        if (currentGamestate == ScoreBoard)
-        {
-            leaderBoard.setUpFinalScoreBoards();
+
+            if (carsFinished == NUM_OF_CARS )
+            {
+                currentGamestate = ScoreBoard;
+            }
+            else
+            {
+                carsFinished = 0;
+            }
 
            
-            leaderBoard.draw(app);
+        }
+
+        if (currentGamestate == ScoreBoard)
+        {   
+            leaderBoard.setUpFinalScoreBoards();
+            app.clear();
+            app.draw(sBackground);
             sBackground.setPosition(-offsetX, -offsetY);
+            leaderBoard.draw(app);
         }
         // screen 
         app.display();

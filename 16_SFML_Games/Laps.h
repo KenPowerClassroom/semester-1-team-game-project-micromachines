@@ -47,6 +47,7 @@ private:
     // custom colors, which opacity will be changed in contrstuctor
     sf::Color Green = sf::Color::Green;
     sf::Color Red =  sf::Color::Red;
+    sf::Color Blue = sf::Color::Blue;
 
     sf::Text m_lapsText; 
     sf::Font m_font;
