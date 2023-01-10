@@ -39,6 +39,7 @@ public:
     sf::Vector2f getPosition();
     float getSpeed();
     float getAngle();
+    float getMaxSpeed();
 private:
 
     sf::Vector2f m_position; 

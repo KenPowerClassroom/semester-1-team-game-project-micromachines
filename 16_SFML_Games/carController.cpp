@@ -168,3 +168,8 @@ float carController::getAngle()
 {
     return m_angle * 180 / 3.141593;
 }
+
+float carController::getMaxSpeed()
+{
+    return m_maxSpeed;
+}

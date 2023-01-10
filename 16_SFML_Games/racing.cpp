@@ -3,7 +3,10 @@
 #include "Car.h"
 using namespace sf;
 
-
+void checkIfOnTrack(int t_offsetX,int t_offsetY);
+sf::RectangleShape trackOutline;//rectangle used to check if the car is "on" the track
+sf::CircleShape playerTracker;//used so global bounds will function
+bool playerOnTrack = false;
 
 int racing()
 {
@@ -48,16 +51,14 @@ int racing()
     float maxScreenHeight = 3400;
     // screen 
 
-    sf::RectangleShape trackOutline;//rectangle used to check if the car is "on" the track
+
     trackOutline.setSize(sf::Vector2f(200, 5480));
     trackOutline.setOutlineColor(sf::Color::Green);
     trackOutline.setOutlineThickness(5);
     trackOutline.setFillColor(sf::Color::Color(0, 0, 0, 0));
 
-    sf::CircleShape playerTracker;//used so global bounds will function
     playerTracker.setRadius(1);
 
-    bool playerOnTrack = false;
 
     // game loop 
     while (app.isOpen())
@@ -69,6 +70,7 @@ int racing()
                 app.close();
         }
 
+        checkIfOnTrack(offsetX, offsetY);
         // movememnt 
         cars[0].steer(playerOnTrack);//now sends over if the car is on the track
        
@@ -112,59 +114,6 @@ int racing()
 
         playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
 
-
-        for (int index = 0; index < 5; index++)
-        {
-            if (index == 0)//left straight
-            {
-                trackOutline.setSize(sf::Vector2f(300, 5480));
-                trackOutline.setPosition(-offsetX + 220, -offsetY + 480);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
-                trackOutline.setOutlineColor(sf::Color::Green);
-                app.draw(trackOutline);
-            }
-            if (index == 1)//top straight
-            {
-                trackOutline.setSize(sf::Vector2f(1840, 500));
-                trackOutline.setPosition(-offsetX + 380, -offsetY + 330);
-                trackOutline.setOutlineColor(sf::Color::Blue);
-                app.draw(trackOutline);
-            }
-            if (index == 2)//first corner
-            {
-                trackOutline.setSize(sf::Vector2f(400, 500));
-                trackOutline.setRotation(45);
-                trackOutline.setPosition(-offsetX + 390, -offsetY + 320);
-                trackOutline.setOutlineColor(sf::Color::Cyan);
-                app.draw(trackOutline);
-                trackOutline.setRotation(0);
-            }
-            if (index == 3)//2nd corner
-            {
-                trackOutline.setSize(sf::Vector2f(650, 400));
-                trackOutline.setRotation(45);
-                trackOutline.setPosition(-offsetX + 1950, -offsetY + 500);
-                trackOutline.setRotation(0);
-            }
-            if (index == 4)//3rd straight
-            {
-                trackOutline.setSize(sf::Vector2f(450, 4000));
-                trackOutline.setRotation(0);
-                trackOutline.setPosition(-offsetX + 2200, -offsetY + 750);
-                trackOutline.setRotation(0);
-            }
-
-
-            if (trackOutline.getGlobalBounds().intersects(playerTracker.getGlobalBounds()))//used to check if the player is still on the track
-            {
-                playerOnTrack = true;
-                std::cout << "Player is on track\n";
-                break;
-            }
-            else playerOnTrack = false;
-        }
-
-        std::cout << "spacer\n";
-        //std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
         sBackground.setPosition(-offsetX, -offsetY);
       
 
@@ -195,221 +144,43 @@ int racing()
     }
 
     return 0;
+}
 
+void checkIfOnTrack(int t_offsetX,int t_offsetY)
+{
+    int trackPieceSize[32] = { 300,5480,  1840,500,  400,500,  650,400,  450,4000,  900,450,  800,800, 800,800,  400,1700,  900,400,  200,3200,  4000,500,  600,500,  500,500,  500,300,  500,400 };
+    int trackPiecePositions[32] = { 220,480,  380,330,  390,320,  1950,500,  2200,750,  2600,4700,  2400,2600,  3000,4600,  3300,2900,  3700,2700,  4600,2900,  350,6100,  3700,2700,  4500,3000,  4300,5900, 270,5900 };
 
+    for (int index = 0; index <= 15; index++)
+    {
 
+        if (index == 0)//left straight
+        {
+            trackOutline.setSize(sf::Vector2f(trackPieceSize[index], trackPieceSize[index + 1]));
+            trackOutline.setPosition(-t_offsetX + trackPiecePositions[index], -t_offsetY + trackPiecePositions[index + 1]);//holds the track in place using the backgrouds coordinates and offsets it so it matches the track
+        }
+        if (index > 0)
+        {
+            trackOutline.setSize(sf::Vector2f(trackPieceSize[index * 2], trackPieceSize[index * 2 + 1]));
+            trackOutline.setPosition(sf::Vector2f(-t_offsetX + trackPiecePositions[index * 2], -t_offsetY + trackPiecePositions[index * 2 + 1]));
 
+            if (index == 2 || index == 3 || index == 6 || index == 12 || index == 14)
+            {
+                trackOutline.setRotation(45);
+            }
+            if (index == 7 || index == 13 || index == 15)
+            {
+                trackOutline.setRotation(-45);
+            }
+        }
+        trackOutline.setRotation(0);
 
-
-
-
-
-
-
-
-   // RenderWindow app(VideoMode(640, 480), "Car Racing Game!");
-   // app.setFramerateLimit(60);
-
-
-   // // visual set up for cars 
-   // Texture t1,t2,t3;
-   // t1.loadFromFile("images/racing/background.png");
-   // t2.loadFromFile("images/racing/car.png");
-   // t1.setSmooth(true);
-   // t2.setSmooth(true);
-
-   // Sprite sBackground(t1), sCar(t2);
-   // sBackground.scale(2,2);
-   // sCar.setOrigin(22, 22);
-   // // visual set up for cars 
-
-
-
-
-   // float carRadius=22;
-   // const int numOfCars=5;
-   // Car car[numOfCars];
-
-
-   // // car startPositioning 
-   // for(int i=0;i<numOfCars;i++)
-   // {
-   //   car[i].x=300+i*50;
-   //   car[i].y=1700+i*80;
-   //   car[i].speed=7+i;
-   // }
-   // // car startPositioning 
-
-
-   //// variables for movement 
-   //float speed=0,angle=0;
-   //float maxSpeed=12.0;
-   //float acceleration=0.2, deceleration=0.3;
-   //float turnSpeed=0.08;
-   //// variables for movement 
-  
-
-   //// screen 
-   //int offsetX=0,offsetY=0;
-   //float minScreenWidth = 320;
-   //float minScreenHeight = 240;
-   //float maxScreenWidth = 2500;
-   //float maxScreenHeight = 3400;
-   //// screen 
-
-
-
-   //// game loop 
-   // while (app.isOpen())
-   // {
-   //     Event e;
-   //     while (app.pollEvent(e))
-   //     {
-   //         if (e.type == Event::Closed)
-   //             app.close();
-   //     }
-
-   // // movememnt 
-   // bool Up=0,Right=0,Down=0,Left=0;
-   // if (Keyboard::isKeyPressed(Keyboard::Up)) Up=1;
-   // if (Keyboard::isKeyPressed(Keyboard::Right)) Right=1;
-   // if (Keyboard::isKeyPressed(Keyboard::Down)) Down=1;
-   // if (Keyboard::isKeyPressed(Keyboard::Left)) Left=1;
-   // // movement 
-
-   //
-
-   // // speed management  
-   // if (Up && speed < maxSpeed)
-   // {
-   //     if (speed < 0)
-   //     {
-   //         speed += deceleration;
-   //     }
-   //     else
-   //     {
-   //         speed += acceleration;
-   //     }
-   // }
- 
-
-   // if (Down && speed > -maxSpeed)
-   // {
-   //     if (speed > 0)
-   //     {
-   //         speed -= deceleration;
-   //     }
-   //     else
-   //     {
-   //         speed -= acceleration;
-   //     }
-   // }
-   //     
-
-   // if (!Up && !Down)
-   // {
-   //     if (speed - deceleration > 0)
-   //     {
-   //         speed -= deceleration;
-   //     }
-   //     else if (speed + deceleration < 0)
-   //     {
-   //         speed += deceleration;
-   //     }
-   //     else
-   //     {
-   //         speed = 0;
-   //     }
-   // }
-   // if (Right && speed != 0)
-   // {
-   //     angle += turnSpeed * speed / maxSpeed;
-   // }
-   // if (Left && speed != 0)
-   // {
-   //     angle -= turnSpeed * speed / maxSpeed;
-   // }
-
-   // car[0].speed = speed;
-   // car[0].angle = angle;
-
-   // for (int i = 0; i < numOfCars; i++)
-   // {
-   //     car[i].move();
-   // }
-   // // speed management  
-
-   // for (int i = 1; i < numOfCars; i++)
-   // {
-   //     car[i].findTarget();
-   // }
-
-
-   // //collision
-   // for(int collisionCheck=0;collisionCheck<numOfCars;collisionCheck++)
-   // { 
-   //     for(int checkAgainst=0;checkAgainst<numOfCars;checkAgainst++)
-   //     {      
-   //         const int CAR_HITBOX = 4 * carRadius * carRadius;
-   //         int distanceBetweenX=0, distanceBetweenY=0;
-
-   //         // if the distance between the cars is lesser than the radisu 
-   //         while (distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY < CAR_HITBOX )
-   //         {
-   //             // pushes car to the side by a tenth of the distance between the cars 
-   //            car[collisionCheck].x+=distanceBetweenX/10.0;
-   //            car[collisionCheck].x+=distanceBetweenY/10.0;
-   //            car[checkAgainst].x-=distanceBetweenX/10.0;
-   //            car[checkAgainst].y-=distanceBetweenY/10.0;
-   //        
-   //            distanceBetweenX = car[collisionCheck].x - car[checkAgainst].x;
-   //            distanceBetweenY = car[collisionCheck].y - car[checkAgainst].y;
-   //             
-   // 
-   //            // if the cars are touching 
-   //            if(distanceBetweenX == 0 && distanceBetweenY == 0)
-   //            {
-   //                 break;
-   //            }
-   //            
-   //         }
-   //     }
-   // }
-   // //collision
-
-
-   // app.clear(Color::Black);
-
-   // // Border locking X
-   // if (car[0].x > minScreenWidth && car[0].x < maxScreenWidth)
-   // {
-   //     offsetX = car[0].x - minScreenWidth;
-   // }
-
-   // // Border locking Y
-   // if (car[0].y > minScreenHeight && car[0].y < maxScreenHeight)
-   // {
-   //     offsetY = car[0].y - minScreenHeight;
-   // }
-
-   // std::cout << "x: " << car[0].x << " y: " << car[0].y << "\n";
-   // sBackground.setPosition(-offsetX, -offsetY);
-
-   // app.draw(sBackground);
-
-   // Color colors[10] = {Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White};
-
-   // // screen 
-   // for(int i=0;i<numOfCars;i++)
-   // {
-   //   sCar.setPosition(car[i].x-offsetX,car[i].y-offsetY);
-   //   sCar.setRotation(car[i].angle*180/3.141593);
-   //   sCar.setColor(colors[i]);
-   //   app.draw(sCar);
-   // }
-   // // screen 
-   // app.display();
-   // }
-
-   // return 0;
+        if (trackOutline.getGlobalBounds().intersects(playerTracker.getGlobalBounds()))//used to check if the player is still on the track
+        {
+            playerOnTrack = true;
+            std::cout << "Player is on track\n";
+            break;
+        }
+        else playerOnTrack = false;
+    }
 }

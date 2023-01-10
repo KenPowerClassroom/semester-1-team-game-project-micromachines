@@ -8,7 +8,7 @@ TEST(CarController, moveCarForward)
 	car.setPosition({0, 0});
 	car.setSpeed(1); 
 	car.setAngle(0.5); 
-	car.inputHandler(true, false, false, false); 
+	car.inputHandler(true, false, false, false,true); 
 
 	int result = static_cast<int>(car.getUpdatedPositioning().y);
 
@@ -22,7 +22,7 @@ TEST(CarController, moveCarBackwards)
 	car.setPosition({ 0, 0 });
 	car.setSpeed(-1);
 	car.setAngle(0.5);
-	car.inputHandler(false, true, false, false);
+	car.inputHandler(false, true, false, false,true);
 
 	int result = static_cast<int>(car.getUpdatedPositioning().y);
 
@@ -44,7 +44,7 @@ TEST(CarController, rotateCar) {
 	
 	for (int i = 0; i < 80; i++)
 	{
-		car.inputHandler(true, false, true, false);
+		car.inputHandler(true, false, true, false,true);
 		car.getUpdatedPositioning();
 	}
 	
@@ -59,7 +59,27 @@ TEST(CarController, findTarget)
 
 	car.setPosition({ 300, 634 });
 	car.setSpeed(1);
-	car.inputHandler(true, false, false, false); 
+	car.inputHandler(true, false, false, false,true); 
 
 	EXPECT_TRUE(car.foundTarget({ 300,610 })); 
+}
+
+TEST(CarController, carOnTrack)
+{
+	carController car;
+
+	car.setPosition({ 300, 500 });
+	car.inputHandler(false, false, false, false, true);
+
+	EXPECT_EQ(car.getMaxSpeed(),12.0);
+}
+
+TEST(CarController, carOffTrack)
+{
+	carController car;
+
+	car.setPosition({ 300, 500 });
+	car.inputHandler(false, false, false, false, false);
+
+	EXPECT_EQ(car.getMaxSpeed(), 6.0);
 }
