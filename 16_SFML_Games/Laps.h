@@ -26,7 +26,16 @@ public:
     /// </summary>
     void checkForCheckpointReset(int& t_currentCheckpoint, int& t_lapsCompleted,  int t_playerCar);
 
+    /// <summary>
+    /// initial set up of text 
+    /// </summary>
     void textSetUp(); 
+
+    /// <summary>
+    /// updates the laps text to display amount of laps completed
+    /// </summary>
+    /// <param name="t_laps"> desired players laps</param>
+    void updateText(int t_laps, int t_checkpoints);
 private:
     // stores positions and takes care of collision
     LapsLogicController lap; 
@@ -38,4 +47,7 @@ private:
     // custom colors, which opacity will be changed in contrstuctor
     sf::Color Green = sf::Color::Green;
     sf::Color Red =  sf::Color::Red;
+
+    sf::Text m_lapsText; 
+    sf::Font m_font;
 };

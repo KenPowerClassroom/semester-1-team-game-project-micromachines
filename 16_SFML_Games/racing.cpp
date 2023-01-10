@@ -16,6 +16,7 @@ int racing()
     m_checpointCircle.setFillColor(sf::Color::Red);
     m_checpointCircle.setRadius(50);
      m_checpointCircle.setPosition({ 360, 700 });
+
     // visual set up for cars 
     Texture t1, t2, t3;
     Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
@@ -25,14 +26,12 @@ int racing()
     t2.setSmooth(true);
 
     Sprite sBackground(t1);
-   
-    int i = 0;
-    
     sBackground.scale(2, 2);
-    Laps lap; 
     
+
     const int NUM_OF_CARS = 5;
     std::vector<newCar>cars; 
+    Laps lap;
     
     for (int i = 0; i < NUM_OF_CARS; i++)
     {
@@ -109,7 +108,6 @@ int racing()
 
 
         // laps
-      
         lap.draw(app); 
         lap.updatePosition(offsetX, offsetY);
         for (int i = 0; i < NUM_OF_CARS; i++)
@@ -120,6 +118,7 @@ int racing()
         {
             lap.checkForCheckpointReset(cars[i].getCurrentCheckpoint(), cars[i].getCurrentLap(), i);
         }
+        lap.updateText(cars[0].getCurrentLap(), cars[0].getCurrentCheckpoint());
         std::cout << "Car 2 Lap: " << cars[0].getCurrentLap() << " Checkpoint: " << cars[0].getCurrentCheckpoint() << std::endl;
         // laps
 

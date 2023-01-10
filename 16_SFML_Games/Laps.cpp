@@ -12,6 +12,7 @@ Laps::Laps()
 		m_checpointCircle[i].setOutlineThickness(2);
 		m_checpointCircle[i].setOutlineColor(sf::Color::Black); 
 	}
+	textSetUp(); 
 }
 
 void Laps::draw(sf::RenderWindow& t_window)
@@ -20,6 +21,7 @@ void Laps::draw(sf::RenderWindow& t_window)
 	{
 		t_window.draw(m_checpointCircle[i]);
 	}
+	t_window.draw(m_lapsText);
 	
 }
 
@@ -72,6 +74,22 @@ void Laps::checkForCheckpointReset(int& t_currentCheckpoint, int& t_lapsComplete
 void Laps::textSetUp()
 {
 
+	m_font.loadFromFile("fonts/racing.ttf");
+
+	m_lapsText.setFont(m_font); 
+	m_lapsText.setFillColor(sf::Color::White); 
+	m_lapsText.setOutlineThickness(2.5);
+	m_lapsText.setOutlineColor(sf::Color::Black);
+	m_lapsText.setCharacterSize(15u); 
+	m_lapsText.setString("Laps");
+	m_lapsText.setPosition({ 10, 10 });
+
+}
+
+void Laps::updateText(int t_laps, int t_checkpoints)
+{
+	m_lapsText.setString("Laps: " + std::to_string(t_laps) + "/3" +
+						 "\nCheckpoints: "+ std::to_string(t_checkpoints +1) + "/8");
 }
 
 
