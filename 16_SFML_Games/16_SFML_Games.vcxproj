@@ -142,6 +142,9 @@
     <ClCompile Include="chess.cpp" />
     <ClCompile Include="doodle_jump.cpp" />
     <ClCompile Include="fifteen_puzzle.cpp" />
+    <ClCompile Include="Laps.cpp" />
+    <ClCompile Include="lap_logic.cpp" />
+    <ClCompile Include="LeaderBoard.cpp" />
     <ClCompile Include="mahjong.cpp" />
     <ClCompile Include="minesweeper.cpp" />
     <ClCompile Include="netwalk.cpp" />
@@ -157,6 +160,9 @@
     <ClInclude Include="carController.h" />
     <ClInclude Include="carInput.h" />
     <ClInclude Include="Connector.hpp" />
+    <ClInclude Include="Laps.h" />
+    <ClInclude Include="lap_logic.h" />
+    <ClInclude Include="LeaderBoard.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

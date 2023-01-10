@@ -65,6 +65,15 @@
     <ClCompile Include="carController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Laps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lap_logic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LeaderBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connector.hpp">
@@ -77,6 +86,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="carController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Laps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lap_logic.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeaderBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
