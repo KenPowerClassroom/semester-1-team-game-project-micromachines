@@ -16,6 +16,7 @@
 #pragma comment(lib,"winmm.lib")
 #pragma comment(lib, "freetype.lib")
 
+
 #include<iostream>
 
 int tetris();

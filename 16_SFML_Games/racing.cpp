@@ -2,20 +2,17 @@
 #include <iostream>
 #include "Car.h"
 #include "Laps.h"
+#include "LeaderBoard.h"
+
 using namespace sf;
 
+enum GAMESTATE { Gampeplay, ScoreBoard };
 int racing()
 {
 
     RenderWindow app(VideoMode(640, 480), "Car Racing Game!");
     app.setFramerateLimit(60);
-    sf::CircleShape m_checpointCircle; 
-    sf::View m_camera;
-    sf::Vector2f lastLocation; 
-
-    m_checpointCircle.setFillColor(sf::Color::Red);
-    m_checpointCircle.setRadius(50);
-     m_checpointCircle.setPosition({ 360, 700 });
+ 
 
     // visual set up for cars 
     Texture t1, t2, t3;
@@ -32,7 +29,10 @@ int racing()
     const int NUM_OF_CARS = 5;
     std::vector<newCar>cars; 
     Laps lap;
-    
+    LeaderBoard leaderBoard; 
+    GAMESTATE currentGamestate = Gampeplay;
+    int carsFinished = 0; 
+
     for (int i = 0; i < NUM_OF_CARS; i++)
     {
         float x = 300 + i * 50;
@@ -64,74 +64,91 @@ int racing()
                 app.close();
         }
 
-        // movememnt 
-        cars[0].steer(); 
-        
-
-        for (int i = 0; i < NUM_OF_CARS; i++)
+        if (currentGamestate == Gampeplay)
         {
-            cars[i].updatePosition();
-        }
-        // speed management  
-
-        for (int  i = 1; i < NUM_OF_CARS; i++)
-        {
-            cars[i].findNextCheckpoint(); 
-        }
-       
-        for (int collisionCheck = 0; collisionCheck < NUM_OF_CARS; collisionCheck++)
-        {
-            for (int checkAgainst = 0; checkAgainst < NUM_OF_CARS; checkAgainst++)
+            // movememnt 
+            cars[0].steer();
+            for (int i = 0; i < NUM_OF_CARS; i++)
             {
-                cars[collisionCheck].checkForCollisionAgainst(cars[checkAgainst].getPosition()); 
+                cars[i].updatePosition();
+            }
+            // speed management  
+
+            for (int i = 1; i < NUM_OF_CARS; i++)
+            {
+                cars[i].findNextCheckpoint();
+            }
+
+            for (int collisionCheck = 0; collisionCheck < NUM_OF_CARS; collisionCheck++)
+            {
+                for (int checkAgainst = 0; checkAgainst < NUM_OF_CARS; checkAgainst++)
+                {
+                    cars[collisionCheck].checkForCollisionAgainst(cars[checkAgainst].getPosition());
+                }
+            }
+            app.clear(Color::Black);
+            // Border locking X
+            if (cars[0].getPosition().x > minScreenWidth && cars[0].getPosition().x < maxScreenWidth)
+            {
+                offsetX = cars[0].getPosition().x - minScreenWidth;
+            }
+            // Border locking Y
+            if (cars[0].getPosition().y > minScreenHeight && cars[0].getPosition().y < maxScreenHeight)
+            {
+                offsetY = cars[0].getPosition().y - minScreenHeight;
+            }
+            std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
+            sBackground.setPosition(-offsetX, -offsetY);
+            app.draw(sBackground);
+            // laps
+            lap.draw(app);
+            lap.updatePosition(offsetX, offsetY);
+            for (int i = 0; i < NUM_OF_CARS; i++)
+            {
+                lap.checkForCollision(cars[i].getPosition(), cars[i].getCurrentCheckpoint(), i);
+            }
+            for (int i = 0; i < NUM_OF_CARS; i++)
+            {
+                lap.checkForCheckpointReset(cars[i].getCurrentCheckpoint(), cars[i].getCurrentLap(), i);
+            }
+            lap.updateText(cars[0].getCurrentLap(), cars[0].getCurrentCheckpoint());
+            // laps
+
+            
+            // screen 
+            for (int i = 0; i < NUM_OF_CARS; i++)
+            {
+                cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });
+                cars[i].setRotation();
+                cars[i].draw(app);
+
+            }
+            
+            for (int i = 0; i < NUM_OF_CARS; i++)
+            {
+                if (cars[i].getCurrentLap() == 3)
+                {
+                    carsFinished++;
+                    leaderBoard.placeCarOnScoreBoard(i);
+                }
+            }
+
+            if (carsFinished == NUM_OF_CARS)
+            {
+                currentGamestate = ScoreBoard;
+            }
+            else
+            {
+                carsFinished = 0;
             }
         }
 
-     
-
-
-        app.clear(Color::Black);
-        // Border locking X
-        if (cars[0].getPosition().x > minScreenWidth && cars[0].getPosition().x < maxScreenWidth)
+        if (currentGamestate == ScoreBoard)
         {
-            offsetX = cars[0].getPosition().x - minScreenWidth;
+            leaderBoard.setUpFinalScoreBoards();
+            leaderBoard.draw(app);
         }
-        // Border locking Y
-        if (cars[0].getPosition().y > minScreenHeight && cars[0].getPosition().y < maxScreenHeight)
-        {
-            offsetY = cars[0].getPosition().y - minScreenHeight;
-        }
-        std::cout << "x: " << cars[0].getPosition().x << " y: " << cars[0].getPosition().y << "\n";
-        sBackground.setPosition(-offsetX, -offsetY);
-        app.draw(sBackground);
-
-
-
-        // laps
-        lap.draw(app); 
-        lap.updatePosition(offsetX, offsetY);
-        for (int i = 0; i < NUM_OF_CARS; i++)
-        {
-            lap.checkForCollision(cars[i].getPosition(), cars[i].getCurrentCheckpoint(), i);
-        }
-        for (int i = 0; i < NUM_OF_CARS; i++)
-        {
-            lap.checkForCheckpointReset(cars[i].getCurrentCheckpoint(), cars[i].getCurrentLap(), i);
-        }
-        lap.updateText(cars[0].getCurrentLap(), cars[0].getCurrentCheckpoint());
-        std::cout << "Car 2 Lap: " << cars[0].getCurrentLap() << " Checkpoint: " << cars[0].getCurrentCheckpoint() << std::endl;
-        // laps
-
-    
-        // screen 
         
-        for (int i = 0; i < NUM_OF_CARS; i++)
-        {
-            cars[i].setPosition({ cars[i].getPosition().x - offsetX, cars[i].getPosition().y - offsetY });
-            cars[i].setRotation();
-            cars[i].draw(app); 
-
-        }
         // screen 
         app.display();
     }
