@@ -59,10 +59,8 @@ public:
     /// <param name="t_window"> game window</param>
     void draw(sf::RenderWindow &t_window); 
 
-    /// <summary>
-    /// handles inputs and passes them to controller to then effect the position and angling of the car
-    /// </summary>
-    void steer(); 
+
+    void steer(bool t_onTrack); 
 
     /// <summary>
     /// passes other car location to controler to check for collision
