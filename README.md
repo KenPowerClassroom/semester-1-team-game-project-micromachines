@@ -4,17 +4,19 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 
 Joshua Boyce Hyland
 
-Feature description :
-- Visual checkpoints
+-Feature description :
+1. Visual checkpoints
     1. change color when you collide with them and stay that color until the end of the lap
     2. can only be activated in the correct order
     3.  colision detection with checkpoints
-- Laps system
+2. Laps system
     1. when all checkpoints have be passed through in the correct order a lap has been completed
     2. after completing the third lap the laps will stopped being tracker
-- Leaderboard
+3 Leaderboard
     1. as every car finishes its thrid lap it will be place on the leaderboard
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
+ - My test.cpp
+ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
 
 Darragh McKernan
 Feature description: 
