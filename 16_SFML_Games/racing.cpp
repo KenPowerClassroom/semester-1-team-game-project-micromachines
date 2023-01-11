@@ -25,6 +25,7 @@ int racing()
     // visual set up for cars 
     Texture t1, t2, t3;
     Color colors[10] = { Color::Red, Color::Green, Color::Magenta, Color::Blue, Color::White };
+
     t1.loadFromFile("images/racing/background.png");
     t2.loadFromFile("images/racing/car.png");
     t1.setSmooth(true);
@@ -158,13 +159,12 @@ int racing()
             // checking for amount of cars that have finished
             for (int i = 0; i < NUM_OF_CARS; i++)
             {
-                if (cars[i].getCurrentLap() > 2)
+                if (cars[i].getCurrentLap() > 3)
                 {
                     carsFinished++;
                     leaderBoard.placeCarOnScoreBoard(i);
                 }
             }
-
 
             if (carsFinished == NUM_OF_CARS )
             {
