@@ -17,6 +17,19 @@ Joshua Boyce Hyland
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
  - My test.cpp
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
+ - My Refactoring 
+    1. Change from car Struct to car Class
+    - Car.h
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/02b809ce5eed4d7f968cd7ce505a35714bbc317e#diff-be020a7b1b7e48da8af55d79eadb2af1288404a14cefe06e9f96c87afec6562a
+    - Car.cpp
+     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/02b809ce5eed4d7f968cd7ce505a35714bbc317e#diff-d478ec98593051e51b5212366ce6b89e8bb3f5d9484247b19088105292314839
+    2 taking car struct from racing.cpp to be converted into car class
+     - racing.cpp
+     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/02b809ce5eed4d7f968cd7ce505a35714bbc317e#diff-8141c34e21df26242a1d2dc374a191f5c0441672cf69c1850d36206623a82469
+   
+    3. Class to humble Object 
+    
+    3. 
 
 Darragh McKernan
 Feature description: 
