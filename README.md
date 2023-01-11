@@ -12,7 +12,7 @@ Joshua Boyce Hyland
 2. Laps system
     1. when all checkpoints have be passed through in the correct order a lap has been completed
     2. after completing the third lap the laps will stopped being tracker
-3 Leaderboard
+3. Leaderboard
     1. as every car finishes its thrid lap it will be place on the leaderboard
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
  - My test.cpp
