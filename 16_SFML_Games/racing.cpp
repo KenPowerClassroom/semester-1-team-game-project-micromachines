@@ -3,6 +3,8 @@
 #include "Car.h"
 #include "Laps.h"
 #include "LeaderBoard.h"
+#include "PowerUps_Nitro.h"
+#include "PowerUps_Stain.h"
 
 using namespace sf;
 
@@ -69,6 +71,15 @@ int racing()
 
     playerTracker.setRadius(1);
 
+    PowerUps_Nitro powerUps_Nitro;
+    powerUps_Nitro.init();
+
+    PowerUps_Stain powerUps_Stain;
+    powerUps_Stain.init();
+
+    float delay = .0f;
+    int indexHolder = 0;
+    bool speedNeedsReset = false;
 
     // game loop 
     while (app.isOpen())
@@ -83,6 +94,9 @@ int racing()
 
         if (currentGamestate == Gampeplay)
         {
+            powerUps_Nitro.update(offsetX, offsetY, cars[0], e);
+            powerUps_Stain.update(offsetX, offsetY, cars, e);
+
             checkIfOnTrack(offsetX, offsetY);
             // movememnt 
             cars[0].steer(playerOnTrack);
@@ -146,6 +160,13 @@ int racing()
 
             playerTracker.setPosition(cars[0].getPosition().x - 2, cars[0].getPosition().y - 2);//sets the tracker to the car and centers it
             
+            for (int i = 1; i < NUM_OF_CARS; i++)
+            {
+                cars[i].findNextCheckpoint();
+            }
+
+            powerUps_Nitro.render(app);
+            powerUps_Stain.render(app);
 
             // screen 
             for (int i = 0; i < NUM_OF_CARS; i++)
@@ -165,7 +186,7 @@ int racing()
                     leaderBoard.placeCarOnScoreBoard(i);
                 }
             }
-
+            
             if (carsFinished == NUM_OF_CARS )
             {
                 currentGamestate = ScoreBoard;
@@ -174,6 +195,7 @@ int racing()
             {
                 carsFinished = 0;
             }
+
 
            
         }

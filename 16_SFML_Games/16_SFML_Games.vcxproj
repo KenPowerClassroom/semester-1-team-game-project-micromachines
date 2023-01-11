@@ -108,6 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,6 +150,8 @@
     <ClCompile Include="minesweeper.cpp" />
     <ClCompile Include="netwalk.cpp" />
     <ClCompile Include="outrun.cpp" />
+    <ClCompile Include="PowerUps_Stain.cpp" />
+    <ClCompile Include="PowerUps_Nitro.cpp" />
     <ClCompile Include="racing.cpp" />
     <ClCompile Include="snake.cpp" />
     <ClCompile Include="tetris.cpp" />
@@ -163,6 +166,8 @@
     <ClInclude Include="Laps.h" />
     <ClInclude Include="lap_logic.h" />
     <ClInclude Include="LeaderBoard.h" />
+    <ClInclude Include="PowerUps_Stain.h" />
+    <ClInclude Include="PowerUps_Nitro.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

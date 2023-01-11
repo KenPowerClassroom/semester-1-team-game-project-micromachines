@@ -67,9 +67,15 @@ public:
     /// </summary>
     /// <param name="t_otherCarPosition"> other car position</param>
     void checkForCollisionAgainst(sf::Vector2f t_otherCarPosition); 
-
    
-    sf::Sprite getSprite(); 
+    sf::Sprite getSprite();
+
+    void nitroBoost();
+    void slowDown();
+
+    float getSpeed();
+
+    void resetSpeed(float t_speed);
 private:
 
     sf::Sprite m_body; 

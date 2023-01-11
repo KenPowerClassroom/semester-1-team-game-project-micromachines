@@ -3,11 +3,11 @@
 #include "../carController.h"
 #include "../carController.cpp"
 
+#include "../car.h"
+#include "../car.cpp"
+
 #include"../lap_logic.h"
 #include"../lap_logic.cpp"
-
-
-
 
 TEST(CarController, Anass_moveCarForward) 
 {
@@ -155,4 +155,26 @@ TEST(LapsLogicController, Josh_lapsCompleteWhenLastCheckpointIsPassed)
 	lap.allcheckPointsPassed(car.getCurrentCHeckPoint(), car.getCurrentLap());
 
 	EXPECT_EQ(car.getCurrentLap(), 1); 
+}
+
+TEST(PowerUps, Anass_NitroBoost)
+{
+	sf::Vector2f pos = { .0f, .0f };
+	float initialSpeed = 12.0f;
+
+	newCar car(pos, initialSpeed);
+	car.nitroBoost();
+
+	EXPECT_EQ(car.getSpeed(), 20.0f);
+}
+
+TEST(PowerUps, Anass_SlowDownNPC)
+{
+	sf::Vector2f pos = { .0f, .0f };
+	float initialSpeed = 12.0f;
+
+	newCar car(pos, initialSpeed);
+	car.slowDown();
+
+	EXPECT_TRUE(car.getSpeed() < initialSpeed);
 }
