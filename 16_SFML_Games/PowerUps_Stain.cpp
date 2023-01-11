@@ -55,6 +55,11 @@ void PowerUps_Stain::init()
 	inputText.setFillColor(sf::Color::Black);
 	inputText.setPosition(-2000.0f, -2000.0f);
 	inputText.setString("Press E");
+
+	for (int i = 1; i < 5; i++)
+	{
+		hitStain.push_back(false);
+	}
 }
 
 void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& cars, sf::Event& event)
@@ -122,9 +127,18 @@ void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& c
 		{
 			if (cars[i].getSprite().getGlobalBounds().intersects(stainSprites[j].getGlobalBounds()))
 			{
-				cars[i].slowDown();
+				hitStain[i] = true;
 				stainSprites[j].setPosition(-5000.0f, -5000.0f);
 				positionIndex++;
+			}
+			else
+			{
+				/*if (hitStain[i])
+				{
+					cars[i].slowDown();
+
+				}
+				cars[i].resetSpeed(7+i);*/
 			}
 		}
 	}

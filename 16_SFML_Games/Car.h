@@ -75,11 +75,13 @@ public:
 
     float getSpeed();
 
+
+
     void resetSpeed(float t_speed);
 private:
 
     sf::Sprite m_body; 
-    carController carController; 
+    carController carController;
 
     int checkpoint; 
     int num = 8; 

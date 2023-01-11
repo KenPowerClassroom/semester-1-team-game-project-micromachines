@@ -29,4 +29,6 @@ private:
 	int positionIndex = 0;
 
 	sf::Text inputText;
+
+	std::vector<bool> hitStain;
 };

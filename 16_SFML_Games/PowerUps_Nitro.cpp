@@ -39,7 +39,7 @@ void PowerUps_Nitro::init()
 	inputText.setCharacterSize(12);
 	inputText.setFillColor(sf::Color::Black);
 	inputText.setPosition(-2000.0f, -2000.0f);
-	inputText.setString("Press\nEnter");
+	inputText.setString("Press\nSpace");
 }
 
 void PowerUps_Nitro::update(float offsetX, float offsetY, newCar& car, sf::Event& event)

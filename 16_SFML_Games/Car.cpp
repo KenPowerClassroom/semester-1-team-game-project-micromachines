@@ -104,12 +104,12 @@ sf::Sprite newCar::getSprite()
 
 void newCar::nitroBoost()
 {
-    carController.setSpeed(20.0f);
+    carController.activateNitroBoost();
 }
 
 void newCar::slowDown()
 {
-    carController.setSpeed(3.0f);
+    carController.activateSlowDown();
 }
 
 float newCar::getSpeed()

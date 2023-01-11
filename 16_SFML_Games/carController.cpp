@@ -186,3 +186,13 @@ float carController::getMaxSpeed()
     return m_maxSpeed;
 
 }
+
+void carController::activateNitroBoost()
+{
+    m_speed = 20.0f;
+}
+
+void carController::activateSlowDown()
+{
+    m_speed = 3.0f;
+}

@@ -1,6 +1,8 @@
 #pragma once
 #include <cmath>
 #include <SFML/System/Vector2.hpp>
+
+
 class carController
 {
 public:
@@ -46,6 +48,10 @@ public:
     float getSpeed();
     float getAngle();
     float getMaxSpeed();
+
+    void activateNitroBoost();
+    void activateSlowDown();
+
 private:
 
     sf::Vector2f m_position; 
@@ -62,4 +68,6 @@ private:
     int m_currentCheckpoint = -1; 
     int m_lapsCompleted = 0;
 
+
+    bool m_slowedDown; 
 };

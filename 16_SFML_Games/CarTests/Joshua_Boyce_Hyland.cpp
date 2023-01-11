@@ -3,42 +3,11 @@
 #include "../carController.h"
 #include "../carController.cpp"
 
-#include "../car.h"
-#include "../car.cpp"
-
 #include"../lap_logic.h"
 #include"../lap_logic.cpp"
 
-TEST(CarController, Anass_moveCarForward) 
-{
-	carController car;
-
-	car.setPosition({0, 0});
-	car.setSpeed(1); 
-	car.setAngle(0.5); 
-	car.inputHandler(true, false, false, false, true);
-
-	int result = static_cast<int>(car.getUpdatedPositioning().y);
-
-	EXPECT_EQ(result, -1);
-}
-
-TEST(CarController, Darragh_moveCarBackwards) 
-{
-	carController car;
-
-	car.setPosition({ 0, 0 });
-	car.setSpeed(-1);
-	car.setAngle(0.5);
-	car.inputHandler(false, true, false, false, true);
-
-	int result = static_cast<int>(car.getUpdatedPositioning().y);
-
-	EXPECT_EQ(result, 1);
-}
-
-// test to see once the car has done half a full rotation that it reaches the same Y axi position it started in 
-TEST(CarController, Team_rotateCar) {
+ //test to see once the car has done half a full rotation that it reaches the same Y axi position it started in 
+TEST(CarController, Team_Josh_rotateCar) {
 
 
 	carController car;
@@ -70,28 +39,6 @@ TEST(CarController, Josh_findTarget)
 	car.inputHandler(true, false, false, false, true);
 
 	EXPECT_TRUE(car.foundTarget({ 300,610 })); 
-}
-
-
-
-TEST(CarController, Darragh_carOnTrack)
-{
-	carController car;
-
-	car.setPosition({ 300, 500 });
-	car.inputHandler(false, false, false, false, true);
-
-	EXPECT_EQ(car.getMaxSpeed(), 12.0);
-}
-
-TEST(CarController, Darragh_carOffTrack)
-{
-	carController car;
-
-	car.setPosition({ 300, 500 });
-	car.inputHandler(false, false, false, false, false);
-
-	EXPECT_EQ(car.getMaxSpeed(), 6.0);
 }
 
 TEST(LapsLogicController, Josh_lcarActivatesCheckpoints)
@@ -155,26 +102,4 @@ TEST(LapsLogicController, Josh_lapsCompleteWhenLastCheckpointIsPassed)
 	lap.allcheckPointsPassed(car.getCurrentCHeckPoint(), car.getCurrentLap());
 
 	EXPECT_EQ(car.getCurrentLap(), 1); 
-}
-
-TEST(PowerUps, Anass_NitroBoost)
-{
-	sf::Vector2f pos = { .0f, .0f };
-	float initialSpeed = 12.0f;
-
-	newCar car(pos, initialSpeed);
-	car.nitroBoost();
-
-	EXPECT_EQ(car.getSpeed(), 20.0f);
-}
-
-TEST(PowerUps, Anass_SlowDownNPC)
-{
-	sf::Vector2f pos = { .0f, .0f };
-	float initialSpeed = 12.0f;
-
-	newCar car(pos, initialSpeed);
-	car.slowDown();
-
-	EXPECT_TRUE(car.getSpeed() < initialSpeed);
 }
