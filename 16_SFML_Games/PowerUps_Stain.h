@@ -27,4 +27,6 @@ private:
 	int stainIndex = 0;
 	std::vector<sf::Vector2f> stainPositions;
 	int positionIndex = 0;
+
+	sf::Text inputText;
 };

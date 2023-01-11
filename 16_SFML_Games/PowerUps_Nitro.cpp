@@ -18,7 +18,7 @@ void PowerUps_Nitro::init()
 	}
 
 	nitroIcon.setTexture(nitroTexture);
-	nitroIcon.setScale(.3f, .3f);
+	nitroIcon.setScale(.1f, .1f);
 	nitroIcon.setPosition(-2000.0f, -2000.0f);
 
 	nitroRect.setFillColor(sf::Color::Black);
@@ -31,9 +31,15 @@ void PowerUps_Nitro::init()
 	}
 
 	nitroCountText.setFont(font);
-	nitroCountText.setCharacterSize(24);
+	nitroCountText.setCharacterSize(12);
 	nitroCountText.setFillColor(sf::Color::White);
 	nitroCountText.setPosition(-2000.0f, -2000.0f);
+
+	inputText.setFont(font);
+	inputText.setCharacterSize(12);
+	inputText.setFillColor(sf::Color::Black);
+	inputText.setPosition(-2000.0f, -2000.0f);
+	inputText.setString("Press\nEnter");
 }
 
 void PowerUps_Nitro::update(float offsetX, float offsetY, newCar& car, sf::Event& event)
@@ -52,9 +58,10 @@ void PowerUps_Nitro::update(float offsetX, float offsetY, newCar& car, sf::Event
 		if (nitroSprites[i].getGlobalBounds().intersects(car.getSprite().getGlobalBounds()))
 		{
 			nitroSprites[i].setPosition(-200.0f, -200.0f);
-			nitroIcon.setPosition(500.0f, .0f);
-			nitroRect.setPosition(500.0f, .0f);
-			nitroCountText.setPosition(500.0f, .0f);
+			nitroIcon.setPosition(575.0f, .0f);
+			nitroRect.setPosition(575.0f, .0f);
+			nitroCountText.setPosition(575.0f, .0f);
+			inputText.setPosition(575.0f, 50.0f);
 			nitroCount++;
 			consumed[i] = true;
 		}
@@ -85,6 +92,7 @@ void PowerUps_Nitro::update(float offsetX, float offsetY, newCar& car, sf::Event
 		nitroIcon.setPosition(-2000.0f, -2000.0f);
 		nitroRect.setPosition(-2000.0f, -2000.0f);
 		nitroCountText.setPosition(-2000.0f, -2000.0f);
+		inputText.setPosition(-2000.0f, -2000.0f);
 	}
 }
 
@@ -98,4 +106,5 @@ void PowerUps_Nitro::render(sf::RenderWindow& window)
 	window.draw(nitroRect);
 	window.draw(nitroCountText);
 	window.draw(nitroIcon);
+	window.draw(inputText);
 }

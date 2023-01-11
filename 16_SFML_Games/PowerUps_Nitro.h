@@ -23,5 +23,7 @@ class PowerUps_Nitro
 		sf::Texture inkTexture;
 		std::vector<sf::Sprite> inkSprites;
 
+		sf::Text inputText;
+
 		std::vector<bool> consumed;
 };

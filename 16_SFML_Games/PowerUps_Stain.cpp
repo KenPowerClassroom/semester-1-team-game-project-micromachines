@@ -18,7 +18,7 @@ void PowerUps_Stain::init()
 	}
 
 	inkIcon.setTexture(inkTexture);
-	inkIcon.setScale(.3f, .3f);
+	inkIcon.setScale(.1f, .1f);
 	inkIcon.setPosition(-2000.0f, -2000.0f);
 
 	inkRect.setFillColor(sf::Color::Black);
@@ -31,7 +31,7 @@ void PowerUps_Stain::init()
 	}
 
 	inkCountText.setFont(font);
-	inkCountText.setCharacterSize(24);
+	inkCountText.setCharacterSize(12);
 	inkCountText.setFillColor(sf::Color::White);
 	inkCountText.setPosition(-2000.0f, -2000.0f);
 
@@ -49,6 +49,12 @@ void PowerUps_Stain::init()
 		stainSprites.push_back(stain);
 		stainPositions.push_back({ -5000.0f, -5000.0f });
 	}
+
+	inputText.setFont(font);
+	inputText.setCharacterSize(12);
+	inputText.setFillColor(sf::Color::Black);
+	inputText.setPosition(-2000.0f, -2000.0f);
+	inputText.setString("Press E");
 }
 
 void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& cars, sf::Event& event)
@@ -64,9 +70,10 @@ void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& c
 		if (inkSprites[i].getGlobalBounds().intersects(cars[0].getSprite().getGlobalBounds()))
 		{
 			inkSprites[i].setPosition(-200.0f, -200.0f);
-			inkIcon.setPosition(320.0f, .0f);
-			inkRect.setPosition(310.0f, .0f);
-			inkCountText.setPosition(310.0f, .0f);
+			inkIcon.setPosition(510.0f, .0f);
+			inkRect.setPosition(500.0f, .0f);
+			inkCountText.setPosition(500.0f, .0f);
+			inputText.setPosition(500.0f, 50.0f);
 			inkCount++;
 			consumed[i] = true;
 		}
@@ -100,7 +107,8 @@ void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& c
 	{
 		inkIcon.setPosition(-2000.0f, -2000.0f);
 		inkRect.setPosition(-2000.0f, -2000.0f);
-		inkCountText.setPosition(-2000.0f, -2000.0f);
+		inkCountText.setPosition(-2000.0f, -2000.0f);		inkCountText.setPosition(-2000.0f, -2000.0f);
+		inputText.setPosition(-2000.0f, -2000.0f);
 	}
 
 	for (int i = positionIndex; i < stainPositions.size(); i++)
@@ -137,4 +145,5 @@ void PowerUps_Stain::render(sf::RenderWindow& window)
 	window.draw(inkRect);
 	window.draw(inkCountText);
 	window.draw(inkIcon);
+	window.draw(inputText);
 }
