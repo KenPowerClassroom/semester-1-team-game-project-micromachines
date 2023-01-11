@@ -6,9 +6,6 @@
 #include"../lap_logic.h"
 #include"../lap_logic.cpp"
 
-
-
-
 TEST(CarController, Anass_moveCarForward) 
 {
 	carController car;

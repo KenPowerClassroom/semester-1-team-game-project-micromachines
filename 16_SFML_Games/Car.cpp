@@ -102,5 +102,25 @@ sf::Sprite newCar::getSprite()
     return m_body;
 }
 
+void newCar::nitroBoost()
+{
+    carController.setSpeed(20.0f);
+}
+
+void newCar::slowDown()
+{
+    carController.setSpeed(3.0f);
+}
+
+float newCar::getSpeed()
+{
+    return carController.getSpeed();
+}
+
+void newCar::resetSpeed(float t_speed)
+{
+    carController.setSpeed(t_speed);
+}
+
 
 
