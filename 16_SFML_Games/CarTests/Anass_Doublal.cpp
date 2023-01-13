@@ -11,12 +11,12 @@ TEST(CarController, Anass_moveCarForward)
 {
 	carController car;
 
-	car.setPosition({0, 0});
+	car.setPosition(0, 0);
 	car.setSpeed(1); 
 	car.setAngle(0.5); 
 	car.inputHandler(true, false, false, false, true);
 
-	int result = static_cast<int>(car.getUpdatedPositioning().y);
+	int result = static_cast<int>(car.getUpdatedY());
 
 	EXPECT_EQ(result, -1);
 }
@@ -28,7 +28,7 @@ TEST(CarController, Team_Anass_rotateCar) {
 	carController car;
 	float startingXpos = 100; 
 
-	car.setPosition({startingXpos,0 });
+	car.setPosition(startingXpos,0 );
 	car.setSpeed(9);
 	car.setAngle(0);
 
@@ -37,10 +37,11 @@ TEST(CarController, Team_Anass_rotateCar) {
 	for (int i = 0; i < 80; i++)
 	{
 		car.inputHandler(true, false, true, false, true);
-		car.getUpdatedPositioning();
+		car.getUpdatedX();
+		car.getUpdatedY();
 	}
 	
-	int result = static_cast<int>(car.getUpdatedPositioning().x);
+	int result = static_cast<int>(car.getUpdatedX());
 	EXPECT_EQ(startingXpos, result);
 
 }
@@ -49,7 +50,7 @@ TEST(PowerUps, Anass_NitroBoost)
 {
 	carController car;
 	float initialSpeed = 12.0f;
-	car.setPosition({ 0,0 });
+	car.setPosition( 0,0 );
 
 	car.activateNitroBoost();
 
@@ -60,7 +61,7 @@ TEST(PowerUps, Anass_SlowDownNPC)
 {
 	carController car;
 	float initialSpeed = 12.0f;
-	car.setPosition({ 0,0 });
+	car.setPosition( 0,0 );
 
 	car.activateSlowDown();
 	

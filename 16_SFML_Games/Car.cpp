@@ -4,7 +4,7 @@
 
 newCar::newCar(sf::Vector2f t_startPosition, float t_speed)
 {
-    carController.setPosition(t_startPosition);
+    carController.setPosition(t_startPosition.x, t_startPosition.y);
     carController.setSpeed(t_speed);
 }
 
@@ -14,7 +14,7 @@ newCar::newCar(sf::Texture &t_carTexture, sf::Vector2f t_startPosition, float t_
 	m_body.setOrigin(22, 22);
     m_body.setColor(t_carColor);
 
-    carController.setPosition(t_startPosition); 
+    carController.setPosition(t_startPosition.x, t_startPosition.y); 
     carController.setSpeed(t_speed); 
 }
 
@@ -29,7 +29,7 @@ void newCar::findNextCheckpoint()
     float tx = points[checkpoint][0];
     float ty = points[checkpoint][1];
    
-    if (carController.foundTarget({tx,ty}))
+    if (carController.foundTarget(tx,ty))
     {
         checkpoint = (checkpoint + 1) % num;
         
@@ -38,7 +38,7 @@ void newCar::findNextCheckpoint()
 
 sf::Vector2f newCar::getPosition()
 {
-    return carController.getPosition();
+    return { carController.getX(),carController.getY() };
 }
 
 int& newCar::getCurrentCheckpoint()
@@ -59,7 +59,7 @@ void newCar::setRotation()
 void newCar::updatePosition()
 {
    
-   m_body.setPosition(carController.getUpdatedPositioning()); 
+    m_body.setPosition({ carController.getUpdatedX(),carController.getUpdatedY() });
 }
 
 void newCar::draw(sf::RenderWindow &t_window)
@@ -94,7 +94,7 @@ void newCar::steer(bool t_onTrack)
 
 void newCar::checkForCollisionAgainst(sf::Vector2f t_otherCarPosition)
 {
-    carController.collisionHandler(t_otherCarPosition); 
+    carController.collisionHandler(t_otherCarPosition.x, t_otherCarPosition.y); 
 }
 
 sf::Sprite newCar::getSprite()

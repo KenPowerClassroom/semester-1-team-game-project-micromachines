@@ -77,10 +77,10 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
 
 }
 
- bool carController::foundTarget(sf::Vector2f nextCheckpoint)
+ bool carController::foundTarget(float t_x, float t_y)
 {
    ; 
-    float beta = m_angle - atan2(nextCheckpoint.x -m_position.x, -nextCheckpoint.y + m_position.y);
+    float beta = m_angle - atan2(t_x -m_x, -t_y + m_y);
     m_angle;
     if (sin(beta) < 0)
     {
@@ -91,8 +91,8 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
         m_angle -= 0.005 * m_speed;
     }
 
-    if ((m_position.x - nextCheckpoint.x) * (m_position.x - nextCheckpoint.x)
-        + (m_position.y - nextCheckpoint.y) * (m_position.y - nextCheckpoint.y) < 25 * 25) /*When close to checkpoint*/
+    if ((m_x - t_x) * (m_x - t_x)
+        + (m_y - t_y) * (m_y - t_y) < 25 * 25) /*When close to checkpoint*/
     {
         return true; //Goes from 0 to 8 and wraps around
     }
@@ -102,9 +102,10 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
     }
 }
 
- void carController::setPosition(sf::Vector2f t_position)
+ void carController::setPosition(float t_x, float t_y)
  {
-     m_position = t_position; 
+     m_x = t_x;
+     m_y = t_y;
  }
 
  void carController::setSpeed(float t_speed)
@@ -117,17 +118,24 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
      m_angle = t_angle;
  }
 
- sf::Vector2f carController::getUpdatedPositioning()
+ 
+
+ float carController::getUpdatedX()
  {
-     m_position.x += sin(m_angle) * m_speed;
-     m_position.y -= cos(m_angle) * m_speed; 
-
-     return m_position; 
-
+     m_x += sin(m_angle) * m_speed;
+     
+     return m_x;
  }
 
- void carController::collisionHandler(sf::Vector2f t_otherCarPosition)
+ float carController::getUpdatedY()
  {
+     m_y -= cos(m_angle) * m_speed;
+     return m_y;
+ }
+
+ void carController::collisionHandler(float t_x, float t_y)
+ {
+   
      const int CAR_HITBOX = 4 * carRadius * carRadius;
      int distanceBetweenX = 0, distanceBetweenY = 0;
 
@@ -135,13 +143,13 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
      while (distanceBetweenX * distanceBetweenX + distanceBetweenY * distanceBetweenY < CAR_HITBOX)
      {
          // pushes car to the side by a tenth of the distance between the cars 
-         m_position.x += distanceBetweenX / 10.0;
-         m_position.x += distanceBetweenY / 10.0;
-         t_otherCarPosition.x -= distanceBetweenX / 10.0;
-         t_otherCarPosition.y -= distanceBetweenY / 10.0;
+         m_x += distanceBetweenX / 10.0;
+         m_x += distanceBetweenY / 10.0;
+         t_x -= distanceBetweenX / 10.0;
+         t_y -= distanceBetweenY / 10.0;
 
-         distanceBetweenX = m_position.x - t_otherCarPosition.x;
-         distanceBetweenY = m_position.y - t_otherCarPosition.y;
+         distanceBetweenX = m_x - t_x;
+         distanceBetweenY = m_y - t_y;
 
 
          // if the cars are touching 
@@ -154,10 +162,7 @@ void carController::inputHandler(bool Up, bool Down, bool Right, bool Left, bool
  }
 
 
- sf::Vector2f carController::getPosition()
- {
-     return m_position;
- }
+ 
 
  float carController::getSpeed()
 {
@@ -173,6 +178,16 @@ float carController::getAngle()
 int& carController::getCurrentCHeckPoint()
 {
     return m_currentCheckpoint; 
+}
+
+float carController::getX()
+{
+    return m_x;
+}
+
+float carController::getY()
+{
+    return m_y;
 }
 
 int& carController::getCurrentLap()

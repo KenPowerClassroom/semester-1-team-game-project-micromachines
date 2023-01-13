@@ -1,6 +1,5 @@
 #pragma once
 #include <cmath>
-#include <SFML/System/Vector2.hpp>
 
 
 class carController
@@ -20,19 +19,20 @@ public:
     /// </summary>
     /// <param name="nextCheckpoint"> the position of the targeted checkpoint the car is going towrds</param>
     /// <returns> whether it has found its current checkpoint its looking for</returns>
-    bool foundTarget(sf::Vector2f nextCheckpoint);
+    bool foundTarget(float t_x, float t_y);
  
     /// <summary>
     /// final positition after being effects by the current angle of the car 
     /// </summary>
     /// <returns></returns>
-    sf::Vector2f getUpdatedPositioning();
+    float getUpdatedX();
+    float getUpdatedY();
 
-    void collisionHandler(sf::Vector2f t_otherCarPosition); 
+    void collisionHandler(float t_x, float t_y);
 
 
     // set functions 
-    void setPosition(sf::Vector2f t_position);
+    void setPosition(float t_x, float t_y);
     void setSpeed(float t_speed);
     void setAngle(float t_angle);
 
@@ -44,7 +44,10 @@ public:
 
     // get functions 
     int& getCurrentCHeckPoint();
-    sf::Vector2f getPosition();
+
+    float  getX();
+    float  getY();
+
     float getSpeed();
     float getAngle();
     float getMaxSpeed();
@@ -53,8 +56,9 @@ public:
     void activateSlowDown();
 
 private:
+    float m_x;
+    float m_y;
 
-    sf::Vector2f m_position; 
     float m_speed = 0;
     float m_angle = 0;
     float carRadius = 22; 
