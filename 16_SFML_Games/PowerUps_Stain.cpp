@@ -125,7 +125,28 @@ void PowerUps_Stain::update(float offsetX, float offsetY, std::vector<newCar>& c
 				cars[i].slowDown();
 				stainSprites[j].setPosition(-5000.0f, -5000.0f);
 				positionIndex++;
+				isCarHit[j] = true;
+				carHit[j] = i;
+				clock[j].restart();
 			}
+		}
+	}
+
+	if (isCarHit[0])
+	{
+		if (clock[0].getElapsedTime().asSeconds() > 5.0f)
+		{
+			cars[carHit[0]].resetSpeed(7 + carHit[0]);
+			isCarHit[0] = false;
+		}
+	}
+
+	if (isCarHit[1])
+	{
+		if (clock[1].getElapsedTime().asSeconds() > 5.0f)
+		{
+			cars[carHit[1]].resetSpeed(7 + carHit[1]);
+			isCarHit[1] = false;
 		}
 	}
 }

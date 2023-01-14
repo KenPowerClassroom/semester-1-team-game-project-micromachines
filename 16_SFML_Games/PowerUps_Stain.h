@@ -29,4 +29,8 @@ private:
 	int positionIndex = 0;
 
 	sf::Text inputText;
+
+	sf::Clock clock[2];
+	int carHit[2] = { 0, 0 };
+	bool isCarHit[2] = { false, false };
 };
