@@ -49,6 +49,18 @@ Feature description:
     4. Uses 1 rectangle shape and gives it several coordinate 
     inputs to check collisions off of it
 
+Anass Doublal
+Feature description
+- Power-ups
+    1. Power-ups that the player can collect are spread around the map
+    2. Once collected, their icon show on the top right corner
+    3. The icon shows how many power-ups are collected and what key to press to use it
+- Nitro boost power up
+    1. Gives an acceleration boost 
+    2. The effect lasts until the player has stopped moving or has gone off-track
+- Stain power up
+    1. Leaves a stain on a desired location
+    2. If another car runs on it, its speed drops for 5 seconds
 
 Contributions :
 
