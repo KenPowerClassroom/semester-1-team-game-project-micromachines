@@ -12,7 +12,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 2. Laps system
     1. when all checkpoints have be passed through in the correct order a lap has been completed
     2. after completing the third lap the laps will stopped being tracker
-3. Leaderboard
+3. Leaderboard ( primarly visual aspect)
     1. as every car finishes its thrid lap it will be place on the leaderboard
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
  ### My test.cpp
@@ -84,8 +84,7 @@ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
  - test.cpp ( car activates checkpoint test)
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
-
-
+- Leaderboard
 Darragh McKernan
 Feature description: 
 - Traction
