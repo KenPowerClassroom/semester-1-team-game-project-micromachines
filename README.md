@@ -4,7 +4,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 
 ## Joshua Boyce Hyland
 
--Feature description :
+###Feature description :
 1. Visual checkpoints
     1. change color when you collide with them and stay that color until the end of the lap
     2. can only be activated in the correct order
@@ -17,7 +17,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
  - My test.cpp
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
- - My Refactoring
+  ### My Refactoring
     - Car refactoring
     1. Change from car Struct to car Class
     - Car.h
