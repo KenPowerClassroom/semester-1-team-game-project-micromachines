@@ -56,7 +56,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-5b97b1ef553ae1354e57c3d163696bc861ca29b996c2fde47814c524a782346c
  - Laps_Logic.cpp
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
- - test.cpp
+ - test.cpp ( car activates checkpoint test)
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 
 
