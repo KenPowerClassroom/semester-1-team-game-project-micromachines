@@ -70,21 +70,30 @@ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/
  - test.cpp ( car activates checkpoint test)
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 4. Cars now completeting laps 
-- carController.h 
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-6cd439cfa751afedad13938b2b0903849bebb31c41fa2c5ed0c198f5796ee88f
-- carController.cpp
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-a54a4cfd693591175df331986f6b15d3bdc1dec6c4a4e5e8939cf932b2041931
-- Laps.h
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-998292822bea4aa9cbbdd2f5dd9def36fbc11cd816630ef4dbc0109eb42b28b9
- - Laps.cpp
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
- - Laps_Logic.h
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-5b97b1ef553ae1354e57c3d163696bc861ca29b996c2fde47814c524a782346c
- - Laps_Logic.cpp
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
- - test.cpp ( car activates checkpoint test)
-https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
+    - carController.h 
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-6cd439cfa751afedad13938b2b0903849bebb31c41fa2c5ed0c198f5796ee88f
+    - carController.cpp
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-a54a4cfd693591175df331986f6b15d3bdc1dec6c4a4e5e8939cf932b2041931
+    - Laps.h
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-998292822bea4aa9cbbdd2f5dd9def36fbc11cd816630ef4dbc0109eb42b28b9
+     - Laps.cpp
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
+     - Laps_Logic.h
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-5b97b1ef553ae1354e57c3d163696bc861ca29b996c2fde47814c524a782346c
+     - Laps_Logic.cpp
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
+     - test.cpp ( car activates checkpoint test)
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 - Leaderboard
+1. implementation of leader board
+- leaderbpard.h
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/202a0d36d93bbd49ca98a3b9d9cfbf40a7817a01#diff-e99c5855450d9717a14cddc7301265e4031c7e2e64c21d4aa83cec3fdfc3615a
+- leaderboard.cpp
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/202a0d36d93bbd49ca98a3b9d9cfbf40a7817a01#diff-8088af078ac0a2346c4e50a43065f54d91b73214fae3e0ef27d3ba255ad9a77c
+- racing.cpp
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/202a0d36d93bbd49ca98a3b9d9cfbf40a7817a01#diff-8141c34e21df26242a1d2dc374a191f5c0441672cf69c1850d36206623a82469
+
+
 Darragh McKernan
 Feature description: 
 - Traction
