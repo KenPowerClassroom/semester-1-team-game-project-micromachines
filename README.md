@@ -58,6 +58,17 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
  - test.cpp ( car activates checkpoint test)
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
+3. Laps feature, Cars cant skip chekpoints
+- Laps.h
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-998292822bea4aa9cbbdd2f5dd9def36fbc11cd816630ef4dbc0109eb42b28b9
+ - Laps.cpp
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
+ - Laps_Logic.h
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
+ - Laps_Logic.cpp
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
+ - test.cpp ( car activates checkpoint test)
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 
 
 Darragh McKernan
