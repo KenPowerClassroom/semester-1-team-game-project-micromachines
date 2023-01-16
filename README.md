@@ -38,6 +38,27 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
       - Car.cpp
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791
 - Laps refactoring 
+1. intial working lap wihout a humble object 
+    - Lap.h 
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/f2a95af90dd61b09be2525a888b5486a835db9cd#diff-998292822bea4aa9cbbdd2f5dd9def36fbc11cd816630ef4dbc0109eb42b28b9
+    - Lap.cpp
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/f2a95af90dd61b09be2525a888b5486a835db9cd#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
+    - racing.cpp
+    https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/f2a95af90dd61b09be2525a888b5486a835db9cd#diff-8141c34e21df26242a1d2dc374a191f5c0441672cf69c1850d36206623a82469
+    - test.cpp (initial trying to get the laps to work with googles)
+   https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/f2a95af90dd61b09be2525a888b5486a835db9cd#diff-a372cf7ba474cbfb228b12ac32c5d537e3649e0f0794aea29ff220cf70724edc
+ 2. Laps Humble object change 
+ - Laps.h
+ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-998292822bea4aa9cbbdd2f5dd9def36fbc11cd816630ef4dbc0109eb42b28b9
+ - Laps.cpp
+ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
+ - Laps_Logic.h
+ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-5b97b1ef553ae1354e57c3d163696bc861ca29b996c2fde47814c524a782346c
+ - Laps_Logic.cpp
+ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
+ - test.cpp
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/e9c999070245bab99663270e6eeec9c0d44260f5#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
+
 
 Darragh McKernan
 Feature description: 
