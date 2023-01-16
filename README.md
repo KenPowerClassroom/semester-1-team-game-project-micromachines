@@ -2,7 +2,7 @@
 semester-1-team-game-project-micromachines created by GitHub Classroom
 
 
-Joshua Boyce Hyland (heading1)
+Joshua Boyce Hyland
 
 -Feature description :
 1. Visual checkpoints
@@ -29,9 +29,9 @@ Joshua Boyce Hyland (heading1)
      https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/02b809ce5eed4d7f968cd7ce505a35714bbc317e#diff-8141c34e21df26242a1d2dc374a191f5c0441672cf69c1850d36206623a82469
    
     3. Class to humble Object 
-      -carController.h
+      - carController.h
       https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791#diff-6cd439cfa751afedad13938b2b0903849bebb31c41fa2c5ed0c198f5796ee88f
-      -carController.cpp
+      - carController.cpp
       https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791#diff-a54a4cfd693591175df331986f6b15d3bdc1dec6c4a4e5e8939cf932b2041931
       - Car.h
       https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791#diff-be020a7b1b7e48da8af55d79eadb2af1288404a14cefe06e9f96c87afec6562a
