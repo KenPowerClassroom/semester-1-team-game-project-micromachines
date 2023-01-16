@@ -15,7 +15,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 3. Leaderboard
     1. as every car finishes its thrid lap it will be place on the leaderboard
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
- - My test.cpp
+ ### My test.cpp
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
   ### My Refactoring
     - Car refactoring
