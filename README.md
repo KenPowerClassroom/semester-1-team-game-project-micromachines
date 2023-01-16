@@ -2,7 +2,7 @@
 semester-1-team-game-project-micromachines created by GitHub Classroom
 
 
-Joshua Boyce Hyland
+Joshua Boyce Hyland (heading1)
 
 -Feature description :
 1. Visual checkpoints
