@@ -37,6 +37,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
       https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791#diff-be020a7b1b7e48da8af55d79eadb2af1288404a14cefe06e9f96c87afec6562a
       - Car.cpp
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/04e87ec1d56791bfa6036be9f71e38840f206791
+- Laps refactoring 
 
 Darragh McKernan
 Feature description: 
