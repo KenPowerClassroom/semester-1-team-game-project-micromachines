@@ -4,7 +4,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 
 ## Joshua Boyce Hyland
 
-###Feature description :
+### Feature description :
 1. Visual checkpoints
     1. change color when you collide with them and stay that color until the end of the lap
     2. can only be activated in the correct order
