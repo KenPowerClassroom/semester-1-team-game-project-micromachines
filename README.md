@@ -19,7 +19,7 @@ Joshua Boyce Hyland
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
  - My Refactoring
     - Car refactoring
-        1. Change from car Struct to car Class
+    1. Change from car Struct to car Class
     - Car.h
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/02b809ce5eed4d7f968cd7ce505a35714bbc317e#diff-be020a7b1b7e48da8af55d79eadb2af1288404a14cefe06e9f96c87afec6562a
     - Car.cpp
