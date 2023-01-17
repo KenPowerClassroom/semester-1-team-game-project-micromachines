@@ -67,7 +67,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-702f1d12bc702d7d6cf2dfcf8e099e0aefc8e3498245c28da11e1835059eca84
      - Laps_Logic.cpp
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
-     - test.cpp ( car activates checkpoint test)
+     - test.cpp (cars Cant SkipC heckPoints)
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/c8c3ac636aaddd9ef17f192dbf08555399db0be3#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 4. Cars now completeting laps 
     - carController.h 
@@ -82,7 +82,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-5b97b1ef553ae1354e57c3d163696bc861ca29b996c2fde47814c524a782346c
      - Laps_Logic.cpp
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-ed032a9c3e6c8f091ddb2cddd186f01869c0ba2a8692ac3339fd2b8e105cac89
-     - test.cpp ( car activates checkpoint test)
+     - test.cpp ( laps Completed When Last Checkpoint Is Passed)
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/27dfeb8850cd8d9dbc49c12e2d4bfd153d3934c7#diff-80c5ffc3da64a03cfd0d739be2a672d61b0d4176920746eb35dd182c52a4543e
 - Leaderboard
 1. implementation of leader board
