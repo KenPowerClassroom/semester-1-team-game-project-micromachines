@@ -123,9 +123,7 @@ Feature description
     1. Leaves a stain on a desired location
     2. If another car runs on it, its speed drops for 5 seconds
 
-## Contributions :
-
-### Team
-    1. intial refactoring of code ( variable names changes etc)
-    2. intial testing (test concepts)
-    3. feature ideas
+### Team Contributions
+    - intial refactoring of code ( variable names changes etc)
+    - intial testing (test concepts)
+    - feature ideas
