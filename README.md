@@ -122,10 +122,17 @@ Feature description:
 - Stain power up
     1. Leaves a stain on a desired location
     2. If another car runs on it, its speed drops for 5 seconds
-### My refactoring
-
 ### My test
 - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Anass_Doublal.cpp
+### My refactoring
+- Initial commit with the base code : 
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/53a57ecbae3421737d24d7024dd74bc70bac301a
+- Value changes to improve experience :
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/28b726eafaad48020ea6cf11fd30f47c56cdf2d2
+- Reverting some useless code :
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/321ca58085288ab0639af383a7dd286b1bedcb28
+- Adding a clock to reset the cars' speeds after they have run on a stain :
+https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/3d2b6e8d89927896fd2b2e96d9085b926dbc1796
 
 ### Team Contributions
     - intial refactoring of code ( variable names changes etc)
