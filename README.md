@@ -129,12 +129,3 @@ Contributions :
     1. intial refactoring of code ( variable names changes etc)
     2. intial testing (test concepts)
     3. feature ideas
-
-- Joshua Boyce Hyland
-    1. car struct to car class
-    2. humble object
-    3. adapt test to fit humble object 
-
-    
-
-
