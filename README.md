@@ -113,15 +113,15 @@ Feature description:
 ## Anass Doublal
 ### Feature description
 - Power-ups
-    a. Power-ups that the player can collect are spread around the map
-    b. Once collected, their icon show on the top right corner
-    c. The icon shows how many power-ups are collected and what key to press to use it
-1. Nitro boost power up
-    a. Gives an acceleration boost 
-    b. The effect lasts until the player has stopped moving or has gone off-track
-2. Stain power up
-    a. Leaves a stain on a desired location
-    b. If another car runs on it, its speed drops for 5 seconds
+    1. Power-ups that the player can collect are spread around the map
+    2. Once collected, their icon show on the top right corner
+    3. The icon shows how many power-ups are collected and what key to press to use it
+- Nitro boost power up
+    1. Gives an acceleration boost 
+    2. The effect lasts until the player has stopped moving or has gone off-track
+- Stain power up
+    1. Leaves a stain on a desired location
+    2. If another car runs on it, its speed drops for 5 seconds
 ### My refactoring
 
 ### My test
