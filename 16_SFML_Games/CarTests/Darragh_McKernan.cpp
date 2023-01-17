@@ -45,7 +45,7 @@ TEST(CarController, Team_Darragh_rotateCar) {
 
 }
 
-TEST(CarController, Darragh_carOnTrack)
+TEST(Traction, Darragh_carOnTrack)
 {
 	carController car;
 
@@ -55,7 +55,7 @@ TEST(CarController, Darragh_carOnTrack)
 	EXPECT_EQ(car.getMaxSpeed(), 12.0);
 }
 
-TEST(CarController, Darragh_carOffTrack)
+TEST(Traction, Darragh_carOffTrack)
 {
 	carController car;
 
