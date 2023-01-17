@@ -103,11 +103,11 @@ Feature description:
        that outline the track
     4. Uses 1 rectangle shape and gives it several coordinate 
     inputs to check collisions off of it
-###Refactoring
+-###Refactoring
    - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/de8d6604cfa125832e97c6ea2a1aa180c192ff15
    - Line 115 in the racing.cpp shows the original code before refactoring
    - Line 149 in racing.cpp shows the refactored code
-###MyTest.cpp
+-###MyTest.cpp
    - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Darragh_McKernan.cpp
 
 Anass Doublal
