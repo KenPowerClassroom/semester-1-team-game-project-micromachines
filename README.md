@@ -2,7 +2,7 @@
 semester-1-team-game-project-micromachines created by GitHub Classroom
 
 
-## Joshua Boyce Hyland
+# Joshua Boyce Hyland
 
 ### Feature description :
 1. Visual checkpoints
@@ -94,7 +94,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
     https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/202a0d36d93bbd49ca98a3b9d9cfbf40a7817a01#diff-8141c34e21df26242a1d2dc374a191f5c0441672cf69c1850d36206623a82469
 
 
-Darragh McKernan
+# Darragh McKernan
 Feature description: 
 - Traction
     1. Cars maximum speed is 12 while on the track
@@ -110,7 +110,7 @@ Feature description:
 ### MyTest.cpp
    - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Darragh_McKernan.cpp
 
-## Anass Doublal
+# Anass Doublal
 ### Feature description
 - Power-ups
     1. Power-ups that the player can collect are spread around the map
