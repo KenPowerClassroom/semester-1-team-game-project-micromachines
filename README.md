@@ -4,7 +4,7 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 
 # Joshua Boyce Hyland
 
-### Feature description :
+## Feature description :
 1. Visual checkpoints
     1. change color when you collide with them and stay that color until the end of the lap
     2. can only be activated in the correct order
@@ -15,9 +15,9 @@ semester-1-team-game-project-micromachines created by GitHub Classroom
 3. Leaderboard ( primarly visual aspect)
     1. as every car finishes its thrid lap it will be place on the leaderboard
     2. once all the cars have finished their third lap, the game will end and the leaderboard will be displayed 
- ### My test.cpp
+ ## My test.cpp
  https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Joshua_Boyce_Hyland.cpp
-  ### My Refactoring
+  ## My Refactoring
   - Car refactoring
     1. Change from car Struct to car Class
     - Car.h
@@ -103,15 +103,15 @@ Feature description:
        that outline the track
     4. Uses 1 rectangle shape and gives it several coordinate 
     inputs to check collisions off of it
-### Refactoring
+## Refactoring
    - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/de8d6604cfa125832e97c6ea2a1aa180c192ff15
    - Line 115 in the racing.cpp shows the original code before refactoring
    - Line 149 in racing.cpp shows the refactored code
-### MyTest.cpp
+## MyTest.cpp
    - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Darragh_McKernan.cpp
 
 # Anass Doublal
-### Feature description
+## Feature description
 - Power-ups
     1. Power-ups that the player can collect are spread around the map
     2. Once collected, their icon show on the top right corner
@@ -122,9 +122,9 @@ Feature description:
 - Stain power up
     1. Leaves a stain on a desired location
     2. If another car runs on it, its speed drops for 5 seconds
-### My test
+## My test
 - https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/blob/master/16_SFML_Games/CarTests/Anass_Doublal.cpp
-### My refactoring
+## My refactoring
 - Initial commit with the base code : 
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/53a57ecbae3421737d24d7024dd74bc70bac301a
 - Value changes to improve experience :
@@ -134,7 +134,7 @@ https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/
 - Adding a clock to reset the cars' speeds after they have run on a stain :
 https://github.com/KenPowerClassroom/semester-1-team-game-project-micromachines/commit/3d2b6e8d89927896fd2b2e96d9085b926dbc1796
 
-### Team Contributions
+# Team Contributions
     - intial refactoring of code ( variable names changes etc)
     - intial testing (test concepts)
     - feature ideas
