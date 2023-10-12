@@ -2,7 +2,7 @@
 semester-1-team-game-project-micromachines created by GitHub Classroom
 
 # GamePlay
-## Full Game
+
 <img src="Gifs/FullGame.gif" width="678" height="382"/>
 
 # Joshua Boyce Hyland
